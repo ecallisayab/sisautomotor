@@ -23,13 +23,15 @@ SisAutomotor - Combustibles
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-lg-12">
                         <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $combustible->nombre }}
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
                         <div class="form-group">
                             <strong>Estado:</strong>
                             {{ $combustible->estado }}

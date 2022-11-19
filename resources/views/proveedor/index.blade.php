@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Combustibles
+SisAutomotor - Proveedores
 @endsection
 
 @section('style_files')
@@ -16,9 +16,9 @@ SisAutomotor - Combustibles
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Listado de combustibles</h5>
-                @can('combustible-create')
-                <a class="btn btn-primary" href="{{ route('combustible.create') }}">
+                <h5>Listado de proveedores</h5>
+                @can('proveedor-create')
+                <a class="btn btn-primary" href="{{ route('proveedor.create') }}">
                     <i class="fa fa-plus"></i>
                     &nbsp;Nuevo
                 </a>
@@ -40,6 +40,11 @@ SisAutomotor - Combustibles
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Teléfono principal</th>
+                            <th>Teléfono</th>
+                            <th>Correo-e</th>
+                            <th>Descripción</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -69,10 +74,15 @@ SisAutomotor - Combustibles
         searchDelay: 500,
         processing: true,
         serverSide: true,
-        ajax: "{{ route('combustible.getList') }}",
+        ajax: "{{ route('proveedor.getList') }}",
         columns: [
             {data: 'id', name: 'id'},
             {data: 'nombre', name: 'nombre'},
+            {data: 'direccion', name: 'direccion'},
+            {data: 'fono_1', name: 'fono_1'},
+            {data: 'fono_2', name: 'fono_2'},
+            {data: 'correo', name: 'correo'},
+            {data: 'descrip', name: 'descrip'},
             {data: 'estado', name: 'estado'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

@@ -53,13 +53,21 @@ class CombustibleController extends Controller
             'estado' => 'required',
         ]);
 
+        // Verifica que el registro no exista en la bd
+        $registro = Combustible::where('nombre', '=', $request->get('nombre'))->get();
+        if (!$registro->isEmpty()) {
+            return redirect()->route('combustible.index')
+                ->with('warning','No se pudo registrar el combustible porque ya existe.');
+        }
+
+        // Guarda el registro en la bd
         $model = new Combustible();
-        $model->nombre = $request->get('nombre');
+        $model->nombre = strtoupper($request->get('nombre'));
         $model->estado = $request->get('estado');
         $model->save();
     
         return redirect()->route('combustible.index')
-                        ->with('success','El combustible fue creado correctamente.');
+            ->with('success','El combustible fue creado correctamente.');
     }
     
     /**
@@ -110,14 +118,26 @@ class CombustibleController extends Controller
             'nombre' => 'required',
             'estado' => 'required',
         ]);
-    
+
+        // Verifica que el registro no exista en la bd
+        $registro = Combustible::where('nombre', $request->get('nombre'))->first();
+        //print_r($registro);exit;
         $model = Combustible::find($id);
-        $model->nombre = $request->get('nombre');
+        if ($registro !== null) {
+            if ($registro->id !== $model->id) {
+                return redirect()->route('combustible.index')
+                    ->with('warning','No se pudo modificar el combustible porque ya existe en otro registro.');
+            }
+            
+        }
+    
+        //$model = Combustible::find($id);
+        $model->nombre = strtoupper($request->get('nombre'));
         $model->estado = $request->get('estado');
         $model->save();
     
         return redirect()->route('combustible.index')
-                        ->with('success','El combustible fue modificado correctamente.');
+            ->with('success','El combustible fue modificado correctamente.');
     }
     
     /**
@@ -132,7 +152,7 @@ class CombustibleController extends Controller
         $model->delete();
     
         return redirect()->route('combustible.index')
-                        ->with('success','El combustible fue eliminado correctamente.');
+            ->with('success','El combustible fue eliminado correctamente.');
     }
 
     /**

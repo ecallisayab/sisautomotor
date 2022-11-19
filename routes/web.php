@@ -54,3 +54,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/combustible/{id}', [App\Http\Controllers\CombustibleController::class, 'destroy'])->name('combustible.destroy');
     Route::get('/combustible/{id}/show', [App\Http\Controllers\CombustibleController::class, 'show'])->name('combustible.show');
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/proveedor', [App\Http\Controllers\ProveedorController::class, 'index'])->name('proveedor.index');
+    Route::get('/proveedor/getList', [App\Http\Controllers\ProveedorController::class, 'getList'])->name('proveedor.getList');
+    Route::get('/proveedor/create', [App\Http\Controllers\ProveedorController::class, 'create'])->name('proveedor.create');
+    Route::post('/proveedor', [App\Http\Controllers\ProveedorController::class, 'store'])->name('proveedor.store');
+    Route::get('/proveedor/{id}/edit', [App\Http\Controllers\ProveedorController::class, 'edit'])->name('proveedor.edit');
+    Route::put('/proveedor/{id}', [App\Http\Controllers\ProveedorController::class, 'update'])->name('proveedor.update');
+    Route::delete('/proveedor/{id}', [App\Http\Controllers\ProveedorController::class, 'destroy'])->name('proveedor.destroy');
+    Route::get('/proveedor/{id}/show', [App\Http\Controllers\ProveedorController::class, 'show'])->name('proveedor.show');
+});

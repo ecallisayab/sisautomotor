@@ -16,6 +16,7 @@ SisAutomotor - Vehículos
     <!-- Content Row -->
     <div class="row">
         <h1>Crear vehículo</h1>
+        <h1>*******************</h1>
     </div>
 @endsection
 

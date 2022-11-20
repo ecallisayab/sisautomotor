@@ -26,7 +26,7 @@ SisAutomotor - Vehículos
                 </div>
                 <div class="card-body">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur autem voluptatibus aliquid. Ullam, cumque molestias? Voluptate, quo? Blanditiis, unde ipsa. Vel debitis modi alias reprehenderit quos tempore ea fugit eaque?
+                        ****************************
                     </p>
                 </div>
             </div>

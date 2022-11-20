@@ -30,8 +30,16 @@ Route::group(['middleware' => ['auth']], function() {
     
 });
 
-Route::get('/vehiculos', [App\Http\Controllers\VehiculoController::class, 'index'])->name('vehiculo.index');
-Route::get('/vehiculos/create', [App\Http\Controllers\VehiculoController::class, 'create'])->name('vehiculo.create');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/vehiculo', [App\Http\Controllers\VehiculoController::class, 'index'])->name('vehiculo.index');
+    Route::get('/vehiculo/getList', [App\Http\Controllers\VehiculoController::class, 'getList'])->name('vehiculo.getList');
+    Route::get('/vehiculo/create', [App\Http\Controllers\VehiculoController::class, 'create'])->name('vehiculo.create');
+    Route::post('/vehiculo', [App\Http\Controllers\VehiculoController::class, 'store'])->name('vehiculo.store');
+    Route::get('/vehiculo/{id}/edit', [App\Http\Controllers\VehiculoController::class, 'edit'])->name('vehiculo.edit');
+    Route::put('/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'update'])->name('vehiculo.update');
+    Route::delete('/vehiculo/{id}', [App\Http\Controllers\VehiculoController::class, 'destroy'])->name('vehiculo.destroy');
+    Route::get('/vehiculo/{id}/show', [App\Http\Controllers\VehiculoController::class, 'show'])->name('vehiculo.show');
+});
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
@@ -75,4 +83,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/permiso/{id}', [App\Http\Controllers\PermisoController::class, 'update'])->name('permiso.update');
     Route::delete('/permiso/{id}', [App\Http\Controllers\PermisoController::class, 'destroy'])->name('permiso.destroy');
     Route::get('/permiso/{id}/show', [App\Http\Controllers\PermisoController::class, 'show'])->name('permiso.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/repuesto', [App\Http\Controllers\RepuestoController::class, 'index'])->name('repuesto.index');
+    Route::get('/repuesto/getList', [App\Http\Controllers\RepuestoController::class, 'getList'])->name('repuesto.getList');
+    Route::get('/repuesto/create', [App\Http\Controllers\RepuestoController::class, 'create'])->name('repuesto.create');
+    Route::post('/repuesto', [App\Http\Controllers\RepuestoController::class, 'store'])->name('repuesto.store');
+    Route::get('/repuesto/{id}/edit', [App\Http\Controllers\RepuestoController::class, 'edit'])->name('repuesto.edit');
+    Route::put('/repuesto/{id}', [App\Http\Controllers\RepuestoController::class, 'update'])->name('repuesto.update');
+    Route::delete('/repuesto/{id}', [App\Http\Controllers\RepuestoController::class, 'destroy'])->name('repuesto.destroy');
+    Route::get('/repuesto/{id}/show', [App\Http\Controllers\RepuestoController::class, 'show'])->name('repuesto.show');
 });

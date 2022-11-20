@@ -58,7 +58,6 @@
                         <a class="collapse-item" href="{{ route('proveedor.index') }}">Proveedores</a>
                         <a class="collapse-item" href="#">Entradas</a>
                         <a class="collapse-item" href="#">Salidas</a>
-                        <a class="collapse-item" href="{{ route('products.index') }}">Productos</a>
                     </div>
                 </div>
             </li>
@@ -83,6 +82,7 @@
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href="{{ route('users.index') }}">Usuarios</a>
                         <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
+                        <a class="collapse-item" href="{{ route('permiso.index') }}">Permisos</a>
                     </div>
                 </div>
             </li>

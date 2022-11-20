@@ -65,3 +65,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/proveedor/{id}', [App\Http\Controllers\ProveedorController::class, 'destroy'])->name('proveedor.destroy');
     Route::get('/proveedor/{id}/show', [App\Http\Controllers\ProveedorController::class, 'show'])->name('proveedor.show');
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/permiso', [App\Http\Controllers\PermisoController::class, 'index'])->name('permiso.index');
+    Route::get('/permiso/getList', [App\Http\Controllers\PermisoController::class, 'getList'])->name('permiso.getList');
+    Route::get('/permiso/create', [App\Http\Controllers\PermisoController::class, 'create'])->name('permiso.create');
+    Route::post('/permiso', [App\Http\Controllers\PermisoController::class, 'store'])->name('permiso.store');
+    Route::get('/permiso/{id}/edit', [App\Http\Controllers\PermisoController::class, 'edit'])->name('permiso.edit');
+    Route::put('/permiso/{id}', [App\Http\Controllers\PermisoController::class, 'update'])->name('permiso.update');
+    Route::delete('/permiso/{id}', [App\Http\Controllers\PermisoController::class, 'destroy'])->name('permiso.destroy');
+    Route::get('/permiso/{id}/show', [App\Http\Controllers\PermisoController::class, 'show'])->name('permiso.show');
+});

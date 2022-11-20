@@ -1,30 +1,91 @@
-@extends('layouts.app')
+@extends('custom.app')
+
+@section('title')
+SisAutomotor - Vechiculo
+@endsection
+
+@section('style_files')
+@endsection
+
+@section('style')
+@endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Product</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5>Datos de Vehiculo</h5>
+                <a class="btn btn-secondary btn-sm" href="{{ route('vehiculo.index') }}">
+                    <i class="fa fa-arrow-left"></i>
+                    &nbsp;Atrás
+                </a>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Matricula:</strong>
+                            {{ $vehiculo->matricula }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Marca:</strong>
+                            {{ $vehiculo->marca }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Modelo:</strong>
+                            {{ $vehiculo->modelo }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Color</strong>
+                            {{ $vehiculo->color }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Tipo:</strong>
+                            {{ $vehiculo->tipo }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Descripción:</strong>
+                            {{ $vehiculo->descrip }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>Estado:</strong>
+                            {{ $vehiculo->estado }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {{ $product->name }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Details:</strong>
-                {{ $product->detail }}
-            </div>
-        </div>
-    </div>
+</div>
 @endsection
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+
+@section('script_files')
+@endsection
+
+@section('script')
+@endsection

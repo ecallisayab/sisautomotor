@@ -192,6 +192,7 @@ class ProveedorController extends Controller
                         $btn .= '<form method="POST" action="'.route('proveedor.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
                     }
                     return $btn;
+                    
                 })
                 ->rawColumns(['action'])
                 ->make(true);

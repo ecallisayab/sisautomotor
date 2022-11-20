@@ -1,51 +1,106 @@
-@extends('layouts.app')
+@extends('custom.app')
+
+@section('title')
+SisAutomotor - Vehiculo
+@endsection
+
+@section('style_files')
+@endsection
+
+@section('style')
+@endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h5>Editar vehiculo</h5>
+                <a class="btn btn-secondary btn-sm" href="{{ route('vehiculo.index') }}">
+                    <i class="fa fa-arrow-left"></i>
+                    &nbsp;Atrás
+                </a>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
+            <div class="card-body">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Advertencia!</strong> Hubo algunos problemas con la entrada de datos.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form action="{{ route('vehiculo.update',$vehiculo->id) }}" method="POST" autocomplete="off">
+                    @csrf
+                    @method('PUT')
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <strong>Matricula:</strong>
+                                <input type="text" name="matricula" value="{{ $vehiculo->matricula }}" class="form-control" placeholder="Matricula" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Marca:</label>
+                                <input type="text" name="marca" value="{{ $vehiculo->marca }}" class="form-control" placeholder="Marca" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Modelo</label>
+                                <input type="text" name="modelo" value="{{ $vehiculo->modelo }}" class="form-control" placeholder="Modelo" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Color:</label>
+                                <input type="text" name="color" value="{{ $vehiculo->color }}" class="form-control" placeholder="color">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Tipo:</label>
+                                <input type="text" name="tipo" value="{{ $vehiculo->tipo }}" class="form-control" placeholder="Tipo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea name="descrip" class="form-control" rows="3">{{ $vehiculo->descrip }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <strong>Estado:</strong>
+                                <select name="estado" class="form-control" required>
+                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="ACTIVO" @if ($vehiculo->estado == 'ACTIVO') selected @endif>ACTIVO</option>
+                                    <option value="INACTIVO" @if ($vehiculo->estado == 'INACTIVO') selected @endif>INACTIVO</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+@endsection
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('script_files')
+@endsection
 
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
-    	@csrf
-        @method('PUT')
-
-         <div class="row">
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Name:</strong>
-		            <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-		        <div class="form-group">
-		            <strong>Detail:</strong>
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $product->detail }}</textarea>
-		        </div>
-		    </div>
-		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-		      <button type="submit" class="btn btn-primary">Submit</button>
-		    </div>
-		</div>
-
-    </form>
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+@section('script')
 @endsection

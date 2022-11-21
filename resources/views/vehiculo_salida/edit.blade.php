@@ -81,7 +81,7 @@ SisAutomotor - Salidas de Vehículo
                                 <select name="id_proyecto" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
                                     @foreach ($proyectos as $item)
-                                    <option value="{{ $item->id }}" @if ($vehiculo_salida->id_proyecto == $item->id) selected @endif>{{ $item->nombre }}</option>
+                                    <option value="{{ $item->id }}" @if ($vehiculo_salida->id_proyecto == $item->id) selected @endif>{{ $item->proyecto }}</option>
                                     @endforeach
                                 </select>
                             </div>

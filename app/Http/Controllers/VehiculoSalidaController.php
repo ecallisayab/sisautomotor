@@ -67,7 +67,7 @@ class VehiculoSalidaController extends Controller
         ]);
 
         // Guarda el registro en la bd
-        $model = new CombustibleSalida();
+        $model = new VehiculoSalida();
         $model->fecha = $request->get('fecha');
         $model->hora = date('H:i:s');
         $model->id_vehiculo = $request->get('id_vehiculo');

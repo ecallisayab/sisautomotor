@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Entradas de Vehiculos
+SisAutomotor - Entradas de Vehículos
 @endsection
 
 @section('style_files')
@@ -15,7 +15,7 @@ SisAutomotor - Entradas de Vehiculos
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Editar entrada de vehiculos</h5>
+                <h5>Nueva entrada de vehiculo</h5>
                 <a class="btn btn-secondary btn-sm" href="{{ route('vehiculo_entrada.index') }}">
                     <i class="fa fa-arrow-left"></i>
                     &nbsp;Atrás
@@ -33,40 +33,22 @@ SisAutomotor - Entradas de Vehiculos
                 </div>
                 @endif
 
-                <form action="{{ route('vehiculo_entrada.update',$vehiculo_entrada->id) }}" method="POST" autocomplete="off">
+                <form action="{{ route('vehiculo_entrada.store') }}" method="POST" autocomplete="off">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" value="{{ $vehiculo_entrada->fecha }}" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Hora:</label>
-                                <input type="date" name="hora" class="form-control" placeholder="Hora" value="{{ $vehiculo_entrada->fecha }}" required>
+                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Vehiculo:</label>
-                                <select name="id_vehiculo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
-                                    @foreach ($vehiculos as $item)
-                                    <option value="{{ $item->id }}" @if ($vehiculo_entrada->id_combustible == $item->id) selected @endif>{{ $item->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Empleado:</label>
+                                <label>Resp. de transportes:</label>
                                 <select name="id_empleado" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
                                     @foreach ($empleados as $item)
-                                    <option value="{{ $item->id }}" @if ($vehiculo_entrada->id_combustible == $item->id) selected @endif>{{ $item->nombre }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->empleado }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,13 +57,19 @@ SisAutomotor - Entradas de Vehiculos
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Resp. de vehiculo:</label>
-                                <select name="id_empleado" class="form-control" required>
+                                <label>Vehículo:</label>
+                                <select name="id_vehiculo" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
-                                    @foreach ($empleados as $item)
-                                    <option value="{{ $item->id }}" @if ($vehiculo_entrada->id_empleado == $item->id) selected @endif>{{ $item->empleado }}</option>
+                                    @foreach ($vehiculos as $item)
+                                    <option value="{{ $item->id }}">{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Resp. vehículo:</label>
+                                <input type="text" name="resp_vehiculo" class="form-control" placeholder="Resp. Vehiculo" required>
                             </div>
                         </div>
                     </div>
@@ -89,7 +77,7 @@ SisAutomotor - Entradas de Vehiculos
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Observación:</label>
-                                <textarea class="form-control" name="obs" rows="3">{{ $vehiculo_entrada->obs }}</textarea>
+                                <textarea class="form-control" name="obs" rows="3"></textarea>
                             </div>
                         </div>
                     </div>

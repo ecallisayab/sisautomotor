@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Entradas Vehiculos
+SisAutomotor - Entrada de Vehículo
 @endsection
 
 @section('style_files')
@@ -16,8 +16,8 @@ SisAutomotor - Entradas Vehiculos
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Listado de entradas de Vehiculos</h5>
-                @can('vehiculo_entrada-create')
+                <h5>Listado de entrada de vehículos</h5>
+                @can('vehiculo_salida-create')
                 <a class="btn btn-primary" href="{{ route('vehiculo_entrada.create') }}">
                     <i class="fa fa-plus"></i>
                     &nbsp;Nuevo
@@ -39,12 +39,12 @@ SisAutomotor - Entradas Vehiculos
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Vehiculo</th>
-                            <th>Empleado</th>
-                            <th>Responsable de Vehiculo</th>
+                            <th>Fecha y hora</th>
+                            <th>Responsable transportes</th>
+                            <th>Vehículo</th>
+                            <th>Resp. vehículo</th>
                             <th>Obs.</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,10 +75,9 @@ SisAutomotor - Entradas Vehiculos
         ajax: "{{ route('vehiculo_entrada.getList') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'fecha', name: 'fecha'},
-            {data: 'hora', name: 'hora'},
-            {data: 'vehiculo', name: 'vehiculo'},
+            {data: 'fecha_hora', name: 'fecha_hora'},
             {data: 'empleado', name: 'empleado'},
+            {data: 'vehiculo', name: 'vehiculo'},
             {data: 'resp_vehiculo', name: 'resp_vehiculo'},
             {data: 'obs', name: 'obs'},
             {data: 'action', name: 'action', orderable: false, searchable: false},

@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Entradas de Combustible
+SisAutomotor - Entradas de Vehiculos
 @endsection
 
 @section('style_files')
@@ -15,8 +15,8 @@ SisAutomotor - Entradas de Combustible
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Nueva entrada de combustible</h5>
-                <a class="btn btn-secondary btn-sm" href="{{ route('combustible_entrada.index') }}">
+                <h5>Nueva entrada de Vehiculo</h5>
+                <a class="btn btn-secondary btn-sm" href="{{ route('vehiculo_entrada.index') }}">
                     <i class="fa fa-arrow-left"></i>
                     &nbsp;Atrás
                 </a>
@@ -33,7 +33,7 @@ SisAutomotor - Entradas de Combustible
                 </div>
                 @endif
 
-                <form action="{{ route('combustible_entrada.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('vehiculo_entrada.store') }}" method="POST" autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col-lg-3">
@@ -42,10 +42,16 @@ SisAutomotor - Entradas de Combustible
                                 <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Hora:</label>
+                                <input type="date" name="hora" class="form-control" placeholder="Hora" required>
+                            </div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Combustible:</label>
-                                <select name="id_combustible" class="form-control" required>
+                                <label>Vehiculo:</label>
+                                <select name="id_vehiculo" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
                                     @foreach ($combustibles as $item)
                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
@@ -55,40 +61,21 @@ SisAutomotor - Entradas de Combustible
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Cantidad:</label>
-                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" max="500000" step="any" required>
+                                <label>Id_empleado:</label>
+                                <input type="number" name="id_empleado" class="form-control" placeholder="id_empleado" step="any" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Resp. de transportes:</label>
+                                <label>Resp. de Vehiculo:</label>
                                 <select name="id_empleado" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
                                     @foreach ($empleados as $item)
                                     <option value="{{ $item->id }}">{{ $item->empleado }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Proveedor:</label>
-                                <select name="id_proveedor" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
-                                    @foreach ($proveedores as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Empleado proveedor:</label>
-                                <input type="text" name="emp_proveedor" class="form-control" placeholder="Emp. proveedor" required>
                             </div>
                         </div>
                         <div class="col-lg-6">

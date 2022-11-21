@@ -36,8 +36,12 @@
                 <div id="menuVehiculo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        @can('vehiculo-list')
                         <a class="collapse-item" href="{{ route('vehiculo.index') }}">Vehículo</a>
-                        <a class="collapse-item" href="#">Repuestos</a>
+                        @endcan
+                        @can('repuesto-list')
+                        <a class="collapse-item" href="{{ route('vehiculo.index') }}">Repuestos</a>
+                        @endcan
                         <a class="collapse-item" href="#">Entradas</a>
                         <a class="collapse-item" href="#">Salidas</a>
                     </div>
@@ -54,10 +58,18 @@
                 <div id="menuCombustible" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        @can('combustible-list')
                         <a class="collapse-item" href="{{ route('combustible.index') }}">Combustible</a>
+                        @endcan
+                        @can('proveedor-list')
                         <a class="collapse-item" href="{{ route('proveedor.index') }}">Proveedores</a>
+                        @endcan
+                        @can('combustible_entrada-list')
                         <a class="collapse-item" href="{{ route('combustible_entrada.index') }}">Entradas</a>
+                        @endcan
+                        @can('combustible_salida-list')
                         <a class="collapse-item" href="{{ route('combustible_salida.index') }}">Salidas</a>
+                        @endcan
                     </div>
                 </div>
             </li>
@@ -80,9 +92,15 @@
                 <div id="menuUsuario" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        @can('user-list')
                         <a class="collapse-item" href="{{ route('users.index') }}">Usuarios</a>
+                        @endcan
+                        @can('role-list')
                         <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
+                        @endcan
+                        @can('permiso-list')
                         <a class="collapse-item" href="{{ route('permiso.index') }}">Permisos</a>
+                        @endcan
                     </div>
                 </div>
             </li>

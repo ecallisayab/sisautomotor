@@ -5,7 +5,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-truck"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SIS.AUTOMOTOR</sup></div>
+                <div class="sidebar-brand-text mx-1">SIS.AUTOMOTOR</sup></div>
             </a>
 
             <!-- Divider -->

@@ -56,8 +56,8 @@
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href="{{ route('combustible.index') }}">Combustible</a>
                         <a class="collapse-item" href="{{ route('proveedor.index') }}">Proveedores</a>
-                        <a class="collapse-item" href="#">Entradas</a>
-                        <a class="collapse-item" href="#">Salidas</a>
+                        <a class="collapse-item" href="{{ route('combustible_entrada.index') }}">Entradas</a>
+                        <a class="collapse-item" href="{{ route('combustible_salida.index') }}">Salidas</a>
                     </div>
                 </div>
             </li>

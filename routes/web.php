@@ -95,3 +95,25 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/repuesto/{id}', [App\Http\Controllers\RepuestoController::class, 'destroy'])->name('repuesto.destroy');
     Route::get('/repuesto/{id}/show', [App\Http\Controllers\RepuestoController::class, 'show'])->name('repuesto.show');
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/combustible_entrada', [App\Http\Controllers\CombustibleEntradaController::class, 'index'])->name('combustible_entrada.index');
+    Route::get('/combustible_entrada/getList', [App\Http\Controllers\CombustibleEntradaController::class, 'getList'])->name('combustible_entrada.getList');
+    Route::get('/combustible_entrada/create', [App\Http\Controllers\CombustibleEntradaController::class, 'create'])->name('combustible_entrada.create');
+    Route::post('/combustible_entrada', [App\Http\Controllers\CombustibleEntradaController::class, 'store'])->name('combustible_entrada.store');
+    Route::get('/combustible_entrada/{id}/edit', [App\Http\Controllers\CombustibleEntradaController::class, 'edit'])->name('combustible_entrada.edit');
+    Route::put('/combustible_entrada/{id}', [App\Http\Controllers\CombustibleEntradaController::class, 'update'])->name('combustible_entrada.update');
+    Route::delete('/combustible_entrada/{id}', [App\Http\Controllers\CombustibleEntradaController::class, 'destroy'])->name('combustible_entrada.destroy');
+    Route::get('/combustible_entrada/{id}/show', [App\Http\Controllers\CombustibleEntradaController::class, 'show'])->name('combustible_entrada.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/combustible_salida', [App\Http\Controllers\CombustibleSalidaController::class, 'index'])->name('combustible_salida.index');
+    Route::get('/combustible_salida/getList', [App\Http\Controllers\CombustibleSalidaController::class, 'getList'])->name('combustible_salida.getList');
+    Route::get('/combustible_salida/create', [App\Http\Controllers\CombustibleSalidaController::class, 'create'])->name('combustible_salida.create');
+    Route::post('/combustible_salida', [App\Http\Controllers\CombustibleSalidaController::class, 'store'])->name('combustible_salida.store');
+    Route::get('/combustible_salida/{id}/edit', [App\Http\Controllers\CombustibleSalidaController::class, 'edit'])->name('combustible_salida.edit');
+    Route::put('/combustible_salida/{id}', [App\Http\Controllers\CombustibleSalidaController::class, 'update'])->name('combustible_salida.update');
+    Route::delete('/combustible_salida/{id}', [App\Http\Controllers\CombustibleSalidaController::class, 'destroy'])->name('combustible_salida.destroy');
+    Route::get('/combustible_salida/{id}/show', [App\Http\Controllers\CombustibleSalidaController::class, 'show'])->name('combustible_salida.show');
+});

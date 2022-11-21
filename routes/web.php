@@ -117,3 +117,25 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/combustible_salida/{id}', [App\Http\Controllers\CombustibleSalidaController::class, 'destroy'])->name('combustible_salida.destroy');
     Route::get('/combustible_salida/{id}/show', [App\Http\Controllers\CombustibleSalidaController::class, 'show'])->name('combustible_salida.show');
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/vehiculo_entrada', [App\Http\Controllers\VehiculoEntradaController::class, 'index'])->name('vehiculo_entrada.index');
+    Route::get('/vehiculo_entrada/getList', [App\Http\Controllers\VehiculoEntradaController::class, 'getList'])->name('vehiculo_entrada.getList');
+    Route::get('/vehiculo_entrada/create', [App\Http\Controllers\VehiculoEntradaController::class, 'create'])->name('vehiculo_entrada.create');
+    Route::post('/vehiculo_entrada', [App\Http\Controllers\VehiculoEntradaController::class, 'store'])->name('vehiculo_entrada.store');
+    Route::get('/vehiculo_entrada/{id}/edit', [App\Http\Controllers\VehiculoEntradaController::class, 'edit'])->name('vehiculo_entrada.edit');
+    Route::put('/vehiculo_entrada/{id}', [App\Http\Controllers\VehiculoEntradaController::class, 'update'])->name('vehiculo_entrada.update');
+    Route::delete('/vehiculo_entrada/{id}', [App\Http\Controllers\VehiculoEntradaController::class, 'destroy'])->name('vehiculo_entrada.destroy');
+    Route::get('/vehiculo_entrada/{id}/show', [App\Http\Controllers\VehiculoEntradaController::class, 'show'])->name('vehiculo_entrada.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/vehiculo_salida', [App\Http\Controllers\VehiculoSalidaController::class, 'index'])->name('vehiculo_salida.index');
+    Route::get('/vehiculo_salida/getList', [App\Http\Controllers\VehiculoSalidaController::class, 'getList'])->name('vehiculo_salida.getList');
+    Route::get('/vehiculo_salida/create', [App\Http\Controllers\VehiculoSalidaController::class, 'create'])->name('vehiculo_salida.create');
+    Route::post('/vehiculo_salida', [App\Http\Controllers\VehiculoSalidaController::class, 'store'])->name('vehiculo_salida.store');
+    Route::get('/vehiculo_salida/{id}/edit', [App\Http\Controllers\VehiculoSalidaController::class, 'edit'])->name('vehiculo_salida.edit');
+    Route::put('/vehiculo_salida/{id}', [App\Http\Controllers\VehiculoSalidaController::class, 'update'])->name('vehiculo_salida.update');
+    Route::delete('/vehiculo_salida/{id}', [App\Http\Controllers\VehiculoSalidaController::class, 'destroy'])->name('vehiculo_salida.destroy');
+    Route::get('/vehiculo_salida/{id}/show', [App\Http\Controllers\VehiculoSalidaController::class, 'show'])->name('vehiculo_salida.show');
+});

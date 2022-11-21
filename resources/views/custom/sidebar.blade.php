@@ -3,9 +3,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-truck"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">SIS.AUTOMOTOR</sup></div>
             </a>
 
             <!-- Divider -->
@@ -42,8 +42,12 @@
                         @can('repuesto-list')
                         <a class="collapse-item" href="{{ route('vehiculo.index') }}">Repuestos</a>
                         @endcan
-                        <a class="collapse-item" href="#">Entradas</a>
-                        <a class="collapse-item" href="#">Salidas</a>
+                        @can('vehiculo_entrada-list')
+                        <a class="collapse-item" href="{{ route('vehiculo_entrada.index') }}">Entradas</a>
+                        @endcan
+                        @can('vehiculo_salida-list')
+                        <a class="collapse-item" href="{{ route('vehiculo_salida.index') }}">Salidas</a>
+                        @endcan
                     </div>
                 </div>
             </li>

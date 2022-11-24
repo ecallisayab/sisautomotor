@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Entradas de Combustible
+SisAutomotor - Mantenimientos programados
 @endsection
 
 @section('style_files')
@@ -15,8 +15,8 @@ SisAutomotor - Entradas de Combustible
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Nueva entrada de combustible</h5>
-                <a class="btn btn-secondary btn-sm" href="{{ route('combustible_entrada.index') }}">
+                <h5>Nuevo mantenimiento programado</h5>
+                <a class="btn btn-secondary btn-sm" href="{{ route('programa_mantenimiento.index') }}">
                     <i class="fa fa-arrow-left"></i>
                     &nbsp;Atrás
                 </a>
@@ -33,7 +33,7 @@ SisAutomotor - Entradas de Combustible
                 </div>
                 @endif
 
-                <form action="{{ route('combustible_entrada.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('programa_mantenimiento.store') }}" method="POST" autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col-lg-3">
@@ -42,55 +42,30 @@ SisAutomotor - Entradas de Combustible
                                 <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Combustible:</label>
-                                <select name="id_combustible" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
-                                    @foreach ($combustibles as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Cantidad:</label>
-                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" max="500000" step="any" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Resp. de transportes:</label>
-                                <select name="id_empleado" class="form-control" required>
+                                <label>Tipo de mantenimiento:</label>
+                                <select name="id_tipo" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
-                                    @foreach ($empleados as $item)
-                                    <option value="{{ $item->id }}">{{ $item->empleado }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Proveedor:</label>
-                                <select name="id_proveedor" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
-                                    @foreach ($proveedores as $item)
+                                    @foreach ($tipos_mantenimiento as $item)
                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Empleado de proveedor:</label>
-                                <input type="text" name="emp_proveedor" class="form-control" placeholder="Emp. proveedor" required>
+                                <label>Vehiculo:</label>
+                                <select name="id_vehiculo" class="form-control" required>
+                                    <option value=""--Seleccione una opción--></option>
+                                    @foreach ($vehiculos as $item)
+                                    <option value="{{ $item->id }}">{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Observación:</label>

@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Entradas de Combustible
+SisAutomotor - Mantenimientos programados
 @endsection
 
 @section('style_files')
@@ -16,9 +16,9 @@ SisAutomotor - Entradas de Combustible
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Listado de entradas de combustible</h5>
-                @can('combustible_entrada-create')
-                <a class="btn btn-primary" href="{{ route('combustible_entrada.create') }}">
+                <h5>Listado de mantenimientos programados</h5>
+                @can('programa_mantenimiento-create')
+                <a class="btn btn-primary" href="{{ route('programa_mantenimiento.create') }}">
                     <i class="fa fa-plus"></i>
                     &nbsp;Nuevo
                 </a>
@@ -39,13 +39,11 @@ SisAutomotor - Entradas de Combustible
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Fecha y hora</th>
-                            <th>Combustible</th>
-                            <th>Cantidad</th>
-                            <th>Resp. de transportes</th>
-                            <th>Proveedor</th>
-                            <th>Empleado proveedor</th>
-                            <th>Obs.</th>
+                            <th>Fecha</th>
+                            <th>Tipo de mantenimiento</th>
+                            <th>vehículo</th>
+                            <th>Estado</th>
+                            <th>Observación</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -74,15 +72,13 @@ SisAutomotor - Entradas de Combustible
         searchDelay: 500,
         processing: true,
         serverSide: true,
-        ajax: "{{ route('combustible_entrada.getList') }}",
+        ajax: "{{ route('programa_mantenimiento.getList') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'fecha_hora', name: 'fecha_hora'},
-            {data: 'combustible', name: 'combustible'},
-            {data: 'cantidad', name: 'cantidad'},
-            {data: 'empleado', name: 'empleado'},
-            {data: 'proveedor', name: 'proveedor'},
-            {data: 'emp_proveedor', name: 'emp_proveedor'},
+            {data: 'fecha', name: 'fecha'},
+            {data: 'tipo_mantenimiento', name: 'tipo_mantenimiento'},
+            {data: 'vehiculo', name: 'vehiculo'},
+            {data: 'estado', name: 'estado'},
             {data: 'obs', name: 'obs'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

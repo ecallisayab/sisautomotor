@@ -38,7 +38,7 @@ SisAutomotor - Vehiculo
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <strong>Matricula:</strong>
+                                <label>Matricula:</label>
                                 <input type="text" name="matricula" value="{{ $vehiculo->matricula }}" class="form-control" placeholder="Matricula" required>
                             </div>
                         </div>
@@ -78,11 +78,14 @@ SisAutomotor - Vehiculo
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <strong>Estado:</strong>
+                                <label>Estado:</label>
                                 <select name="estado" class="form-control" required>
                                     <option value=""--Seleccione una opción--></option>
                                     <option value="ACTIVO" @if ($vehiculo->estado == 'ACTIVO') selected @endif>ACTIVO</option>
                                     <option value="INACTIVO" @if ($vehiculo->estado == 'INACTIVO') selected @endif>INACTIVO</option>
+                                    <option value="EN_MANTENIMIENTO" @if ($vehiculo->estado == 'EN_MANTENIMIENTO') selected @endif>EN MANTENIMIENTO</option>
+                                    <option value="DISPONIBLE" @if ($vehiculo->estado == 'DISPONIBLE') selected @endif>DISPONIBLE</option>
+                                    <option value="NO_DISPONIBLE" @if ($vehiculo->estado == 'NO_DISPONIBLE') selected @endif>NO DISPONIBLE</option>
                                 </select>
                             </div>
                         </div>

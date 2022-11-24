@@ -2,11 +2,11 @@
     
 namespace App\Http\Controllers;
 
-use App\Models\Combustible;
+use App\Models\TipoMantenimiento;
 use Illuminate\Http\Request;
 use DataTables;
     
-class CombustibleController extends Controller
+class TipoMantenimientoController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class CombustibleController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:combustible-list|combustible-create|combustible-edit|combustible-delete', ['only' => ['index','show','getList']]);
-        $this->middleware('permission:combustible-create', ['only' => ['create','store']]);
-        $this->middleware('permission:combustible-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:combustible-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:tipo_mantenimiento-list|tipo_mantenimiento-create|tipo_mantenimiento-edit|tipo_mantenimiento-delete', ['only' => ['index','show','getList']]);
+        $this->middleware('permission:tipo_mantenimiento-create', ['only' => ['create','store']]);
+        $this->middleware('permission:tipo_mantenimiento-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:tipo_mantenimiento-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class CombustibleController extends Controller
      */
     public function index()
     {
-        return view('combustible.index');
+        return view('tipo_mantenimiento.index');
     }
     
     /**
@@ -37,7 +37,7 @@ class CombustibleController extends Controller
      */
     public function create()
     {
-        return view('combustible.create');
+        return view('tipo_mantenimiento.create');
     }
     
     /**
@@ -54,20 +54,20 @@ class CombustibleController extends Controller
         ]);
 
         // Verifica que el registro no exista en la bd
-        $registro = Combustible::where('nombre', '=', $request->get('nombre'))->get();
+        $registro = TipoMantenimiento::where('nombre', '=', $request->get('nombre'))->get();
         if (!$registro->isEmpty()) {
-            return redirect()->route('combustible.index')
-                ->with('warning','No se pudo registrar el combustible porque ya existe.');
+            return redirect()->route('tipo_mantenimiento.index')
+                ->with('warning','No se pudo registrar el tipo de mantenimiento porque ya existe.');
         }
 
         // Guarda el registro en la bd
-        $model = new Combustible();
+        $model = new TipoMantenimiento();
         $model->nombre = strtoupper($request->get('nombre'));
         $model->estado = $request->get('estado');
         $model->save();
     
-        return redirect()->route('combustible.index')
-            ->with('success','El combustible fue creado correctamente.');
+        return redirect()->route('tipo_mantenimiento.index')
+            ->with('success','El tipo de mantenimiento fue creado correctamente.');
     }
     
     /**
@@ -78,13 +78,13 @@ class CombustibleController extends Controller
      */
     public function show($id)
     {
-        $model = Combustible::find($id);
+        $model = TipoMantenimiento::find($id);
 
         $data = array(
-            'combustible' => $model
+            'tipo_mantenimiento' => $model
         );
 
-        return view('combustible.show', $data);
+        return view('tipo_mantenimiento.show', $data);
     }
     
     /**
@@ -96,13 +96,13 @@ class CombustibleController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $model = Combustible::find($id);
+        $model = TipoMantenimiento::find($id);
 
         $data = array(
-            'combustible' => $model
+            'tipo_mantenimiento' => $model
         );
         
-        return view('combustible.edit', $data);
+        return view('tipo_mantenimiento.edit', $data);
     }
     
     /**
@@ -120,23 +120,24 @@ class CombustibleController extends Controller
         ]);
 
         // Verifica que el registro no exista en la bd
-        $registro = Combustible::where('nombre', $request->get('nombre'))->first();
+        $registro = TipoMantenimiento::where('nombre', $request->get('nombre'))->first();
         //print_r($registro);exit;
-        $model = Combustible::find($id);
+        $model = TipoMantenimiento::find($id);
         if ($registro !== null) {
             if ($registro->id !== $model->id) {
-                return redirect()->route('combustible.index')
-                    ->with('warning','No se pudo modificar el combustible porque ya existe en otro registro.');
+                return redirect()->route('tipo_mantenimiento.index')
+                    ->with('warning','No se pudo modificar el tipo de mantenimiento porque ya existe en otro registro.');
             }
+            
         }
     
-        //$model = Combustible::find($id);
+        //$model = TipoMantenimiento::find($id);
         $model->nombre = strtoupper($request->get('nombre'));
         $model->estado = $request->get('estado');
         $model->save();
     
-        return redirect()->route('combustible.index')
-            ->with('success','El combustible fue modificado correctamente.');
+        return redirect()->route('tipo_mantenimiento.index')
+            ->with('success','El tipo de mantenimiento fue modificado correctamente.');
     }
     
     /**
@@ -147,11 +148,11 @@ class CombustibleController extends Controller
      */
     public function destroy($id)
     {
-        $model = Combustible::find($id);
+        $model = TipoMantenimiento::find($id);
         $model->delete();
     
-        return redirect()->route('combustible.index')
-            ->with('success','El combustible fue eliminado correctamente.');
+        return redirect()->route('tipo_mantenimiento.index')
+            ->with('success','El tipo de mantenimiento fue eliminado correctamente.');
     }
 
     /**
@@ -164,18 +165,18 @@ class CombustibleController extends Controller
     {
         if ($request->ajax()) {
             $user = auth()->user();
-            $data = Combustible::select('id','nombre','estado')->get();
+            $data = TipoMantenimiento::select('id','nombre','estado')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($row) use ($user) {
                     $btn = "";
-                    if ($user->can('combustible-list')) {
-                        $btn .= '<a href="'.route('combustible.show', $row->id).'" class="btn btn-secondary btn-sm" title="Ver" alt="Ver"><i class="fa fa-eye"></i></a>&nbsp;';
+                    if ($user->can('tipo_mantenimiento-list')) {
+                        $btn .= '<a href="'.route('tipo_mantenimiento.show', $row->id).'" class="btn btn-secondary btn-sm" title="Ver" alt="Ver"><i class="fa fa-eye"></i></a>&nbsp;';
                     }
-                    if ($user->can('combustible-edit')) {
-                        $btn .= '<a href="'.route('combustible.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
+                    if ($user->can('tipo_mantenimiento-edit')) {
+                        $btn .= '<a href="'.route('tipo_mantenimiento.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
-                    if ($user->can('combustible-delete')) {
-                        $btn .= '<form method="POST" action="'.route('combustible.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                    if ($user->can('tipo_mantenimiento-delete')) {
+                        $btn .= '<form method="POST" action="'.route('tipo_mantenimiento.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
                     }
                     return $btn;
                 })

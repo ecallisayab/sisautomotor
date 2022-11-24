@@ -83,6 +83,9 @@ SisAutomotor - Vehiculo
                                     <option value=""--Seleccione una opción--></option>
                                     <option value="ACTIVO">ACTIVO</option>
                                     <option value="INACTIVO">INACTIVO</option>
+                                    <option value="EN_MANTENIMIENTO">EN MANTENIMIENTO</option>
+                                    <option value="DISPONIBLE">DISPONIBLE</option>
+                                    <option value="NO_DISPONIBLE">NO DISPONIBLE</option>
                                 </select>
                             </div>
                         </div>

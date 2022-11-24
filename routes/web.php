@@ -42,17 +42,6 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
-    Route::get('/products/getList', [App\Http\Controllers\ProductController::class, 'getList'])->name('products.getList');
-    Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
-    Route::post('/products', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
-    Route::get('/products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
-    Route::put('/products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
-    Route::get('/products/{id}/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
-});
-
-Route::group(['middleware' => ['auth']], function() {
     Route::get('/combustible', [App\Http\Controllers\CombustibleController::class, 'index'])->name('combustible.index');
     Route::get('/combustible/getList', [App\Http\Controllers\CombustibleController::class, 'getList'])->name('combustible.getList');
     Route::get('/combustible/create', [App\Http\Controllers\CombustibleController::class, 'create'])->name('combustible.create');
@@ -149,4 +138,48 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/vehiculo_entrada/{id}', [App\Http\Controllers\VehiculoEntradaController::class, 'update'])->name('vehiculo_entrada.update');
     Route::delete('/vehiculo_entrada/{id}', [App\Http\Controllers\VehiculoEntradaController::class, 'destroy'])->name('vehiculo_entrada.destroy');
     Route::get('/vehiculo_entrada/{id}/show', [App\Http\Controllers\VehiculoEntradaController::class, 'show'])->name('vehiculo_entrada.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/tipo_mantenimiento', [App\Http\Controllers\TipoMantenimientoController::class, 'index'])->name('tipo_mantenimiento.index');
+    Route::get('/tipo_mantenimiento/getList', [App\Http\Controllers\TipoMantenimientoController::class, 'getList'])->name('tipo_mantenimiento.getList');
+    Route::get('/tipo_mantenimiento/create', [App\Http\Controllers\TipoMantenimientoController::class, 'create'])->name('tipo_mantenimiento.create');
+    Route::post('/tipo_mantenimiento', [App\Http\Controllers\TipoMantenimientoController::class, 'store'])->name('tipo_mantenimiento.store');
+    Route::get('/tipo_mantenimiento/{id}/edit', [App\Http\Controllers\TipoMantenimientoController::class, 'edit'])->name('tipo_mantenimiento.edit');
+    Route::put('/tipo_mantenimiento/{id}', [App\Http\Controllers\TipoMantenimientoController::class, 'update'])->name('tipo_mantenimiento.update');
+    Route::delete('/tipo_mantenimiento/{id}', [App\Http\Controllers\TipoMantenimientoController::class, 'destroy'])->name('tipo_mantenimiento.destroy');
+    Route::get('/tipo_mantenimiento/{id}/show', [App\Http\Controllers\TipoMantenimientoController::class, 'show'])->name('tipo_mantenimiento.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/mantenimiento', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimiento.index');
+    Route::get('/mantenimiento/getList', [App\Http\Controllers\MantenimientoController::class, 'getList'])->name('mantenimiento.getList');
+    Route::get('/mantenimiento/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimiento.create');
+    Route::post('/mantenimiento', [App\Http\Controllers\MantenimientoController::class, 'store'])->name('mantenimiento.store');
+    Route::get('/mantenimiento/{id}/edit', [App\Http\Controllers\MantenimientoController::class, 'edit'])->name('mantenimiento.edit');
+    Route::put('/mantenimiento/{id}', [App\Http\Controllers\MantenimientoController::class, 'update'])->name('mantenimiento.update');
+    Route::delete('/mantenimiento/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimiento.destroy');
+    Route::get('/mantenimiento/{id}/show', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimiento.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/seguimiento_mantenimiento', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'index'])->name('seguimiento_mantenimiento.index');
+    Route::get('/seguimiento_mantenimiento/getList', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'getList'])->name('seguimiento_mantenimiento.getList');
+    Route::get('/seguimiento_mantenimiento/create', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'create'])->name('seguimiento_mantenimiento.create');
+    Route::post('/seguimiento_mantenimiento', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'store'])->name('seguimiento_mantenimiento.store');
+    Route::get('/seguimiento_mantenimiento/{id}/edit', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'edit'])->name('seguimiento_mantenimiento.edit');
+    Route::put('/seguimiento_mantenimiento/{id}', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'update'])->name('seguimiento_mantenimiento.update');
+    Route::delete('/seguimiento_mantenimiento/{id}', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'destroy'])->name('seguimiento_mantenimiento.destroy');
+    Route::get('/seguimiento_mantenimiento/{id}/show', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'show'])->name('seguimiento_mantenimiento.show');
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/programa_mantenimiento', [App\Http\Controllers\ProgramaMantenimientoController::class, 'index'])->name('programa_mantenimiento.index');
+    Route::get('/programa_mantenimiento/getList', [App\Http\Controllers\ProgramaMantenimientoController::class, 'getList'])->name('programa_mantenimiento.getList');
+    Route::get('/programa_mantenimiento/create', [App\Http\Controllers\ProgramaMantenimientoController::class, 'create'])->name('programa_mantenimiento.create');
+    Route::post('/programa_mantenimiento', [App\Http\Controllers\ProgramaMantenimientoController::class, 'store'])->name('programa_mantenimiento.store');
+    Route::get('/programa_mantenimiento/{id}/edit', [App\Http\Controllers\ProgramaMantenimientoController::class, 'edit'])->name('programa_mantenimiento.edit');
+    Route::put('/programa_mantenimiento/{id}', [App\Http\Controllers\ProgramaMantenimientoController::class, 'update'])->name('programa_mantenimiento.update');
+    Route::delete('/programa_mantenimiento/{id}', [App\Http\Controllers\ProgramaMantenimientoController::class, 'destroy'])->name('programa_mantenimiento.destroy');
+    Route::get('/programa_mantenimiento/{id}/show', [App\Http\Controllers\ProgramaMantenimientoController::class, 'show'])->name('programa_mantenimiento.show');
 });

@@ -37,16 +37,25 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         @can('vehiculo-list')
-                        <a class="collapse-item" href="{{ route('vehiculo.index') }}">Vehículo</a>
-                        @endcan
-                        @can('repuesto-list')
-                        <a class="collapse-item" href="{{ route('vehiculo.index') }}">Repuestos</a>
-                        @endcan
+                        <a class="collapse-item" href="{{ route('vehiculo.index') }}">Vehículos</a>
                         @can('vehiculo_entrada-list')
                         <a class="collapse-item" href="{{ route('vehiculo_entrada.index') }}">Entradas</a>
                         @endcan
                         @can('vehiculo_salida-list')
                         <a class="collapse-item" href="{{ route('vehiculo_salida.index') }}">Salidas</a>
+                        @endcan
+                        @can('mantenimiento-list')
+                        <a class="collapse-item" href="{{ route('mantenimiento.index') }}">Mantenimiento</a>
+                        @endcan
+                        @can('programa_mantenimiento-list')
+                        <a class="collapse-item" href="{{ route('programa_mantenimiento.index') }}">Programar mantenimiento</a>
+                        @endcan
+                        @endcan
+                        @can('repuesto-list')
+                        <a class="collapse-item" href="{{ route('repuesto.index') }}">Repuestos</a>
+                        @endcan
+                        @can('tipo_mantenimiento-list')
+                        <a class="collapse-item" href="{{ route('tipo_mantenimiento.index') }}">Tipo de mantenimiento</a>
                         @endcan
                     </div>
                 </div>

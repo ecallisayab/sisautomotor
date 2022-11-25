@@ -186,3 +186,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/programa_mantenimiento/{id}', [App\Http\Controllers\ProgramaMantenimientoController::class, 'destroy'])->name('programa_mantenimiento.destroy');
     Route::get('/programa_mantenimiento/{id}/show', [App\Http\Controllers\ProgramaMantenimientoController::class, 'show'])->name('programa_mantenimiento.show');
 });
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/reportes/combustible/entradas', [App\Http\Controllers\ReporteCombustibleController::class, 'view_entradas_form'])->name('reporte_combustible.view_entradas_form');
+    Route::post('/reportes/combustible/entradas', [App\Http\Controllers\ReporteCombustibleController::class, 'get_entradas'])->name('reporte_combustible.get_entradas');
+    Route::get('/reportes/combustible/salidas', [App\Http\Controllers\ReporteCombustibleController::class, 'view_salidas_form'])->name('reporte_combustible.view_salidas_form');
+    Route::post('/reportes/combustible/salidas', [App\Http\Controllers\ReporteCombustibleController::class, 'get_salidas'])->name('reporte_combustible.get_salidas');
+});

@@ -152,20 +152,23 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/mantenimiento', [App\Http\Controllers\MantenimientoController::class, 'index'])->name('mantenimiento.index');
-    Route::get('/mantenimiento/getList', [App\Http\Controllers\MantenimientoController::class, 'getList'])->name('mantenimiento.getList');
-    Route::get('/mantenimiento/create', [App\Http\Controllers\MantenimientoController::class, 'create'])->name('mantenimiento.create');
-    Route::post('/mantenimiento', [App\Http\Controllers\MantenimientoController::class, 'store'])->name('mantenimiento.store');
-    Route::get('/mantenimiento/{id}/edit', [App\Http\Controllers\MantenimientoController::class, 'edit'])->name('mantenimiento.edit');
-    Route::put('/mantenimiento/{id}', [App\Http\Controllers\MantenimientoController::class, 'update'])->name('mantenimiento.update');
-    Route::delete('/mantenimiento/{id}', [App\Http\Controllers\MantenimientoController::class, 'destroy'])->name('mantenimiento.destroy');
-    Route::get('/mantenimiento/{id}/show', [App\Http\Controllers\MantenimientoController::class, 'show'])->name('mantenimiento.show');
+    Route::get('/mantenimiento', [App\Http\Controllers\MantenimientoEntradaController::class, 'index'])->name('mantenimiento.index');
+    Route::get('/mantenimiento/getList', [App\Http\Controllers\MantenimientoEntradaController::class, 'getList'])->name('mantenimiento.getList');
+    Route::get('/mantenimiento_entrada/create', [App\Http\Controllers\MantenimientoEntradaController::class, 'create'])->name('mantenimiento_entrada.create');
+    Route::post('/mantenimiento_entrada', [App\Http\Controllers\MantenimientoEntradaController::class, 'store'])->name('mantenimiento_entrada.store');
+    Route::get('/mantenimiento_entrada/{id}/edit', [App\Http\Controllers\MantenimientoEntradaController::class, 'edit'])->name('mantenimiento_entrada.edit');
+    Route::put('/mantenimiento_entrada/{id}', [App\Http\Controllers\MantenimientoEntradaController::class, 'update'])->name('mantenimiento_entrada.update');
+    Route::delete('/mantenimiento_entrada/{id}', [App\Http\Controllers\MantenimientoEntradaController::class, 'destroy'])->name('mantenimiento_entrada.destroy');
+    Route::get('/mantenimiento_entrada/{id}/show', [App\Http\Controllers\MantenimientoEntradaController::class, 'show'])->name('mantenimiento_entrada.show');
+    Route::get('/mantenimiento_salida/{id}/edit', [App\Http\Controllers\MantenimientoSalidaController::class, 'edit'])->name('mantenimiento_salida.edit');
+    Route::put('/mantenimiento_salida/{id}', [App\Http\Controllers\MantenimientoSalidaController::class, 'update'])->name('mantenimiento_salida.update');
+    
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/seguimiento_mantenimiento', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'index'])->name('seguimiento_mantenimiento.index');
-    Route::get('/seguimiento_mantenimiento/getList', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'getList'])->name('seguimiento_mantenimiento.getList');
-    Route::get('/seguimiento_mantenimiento/create', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'create'])->name('seguimiento_mantenimiento.create');
+    Route::get('/seguimiento_mantenimiento/{idmante}', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'index'])->name('seguimiento_mantenimiento.index');
+    Route::get('/seguimiento_mantenimiento/getList/{idmante}', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'getList'])->name('seguimiento_mantenimiento.getList');
+    Route::get('/seguimiento_mantenimiento/{idmante}/create', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'create'])->name('seguimiento_mantenimiento.create');
     Route::post('/seguimiento_mantenimiento', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'store'])->name('seguimiento_mantenimiento.store');
     Route::get('/seguimiento_mantenimiento/{id}/edit', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'edit'])->name('seguimiento_mantenimiento.edit');
     Route::put('/seguimiento_mantenimiento/{id}', [App\Http\Controllers\SeguimientoMantenimientoController::class, 'update'])->name('seguimiento_mantenimiento.update');

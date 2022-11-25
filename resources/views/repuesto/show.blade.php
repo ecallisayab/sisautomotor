@@ -25,6 +25,14 @@ SisAutomotor - Repuestos
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
+                            <strong>N° de registro:</strong>
+                            {{ $repuesto->id }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $repuesto->nombre }}
                         </div>

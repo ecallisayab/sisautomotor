@@ -6,6 +6,7 @@ SisAutomotor - Mantenimientos programados
 
 @section('style_files')
 <link href="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ asset('custom/vendor/datatables/responsive.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('style')
@@ -35,16 +36,16 @@ SisAutomotor - Mantenimientos programados
                 </div>
                 @endif
 
-                <table class="table table-bordered table-hover user_datatable">
+                <table class="table table-bordered table-hover nowrap" style="width:100%" id="dtMain">
                     <thead>
                         <tr>
+                            <th>Acciones</th>
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Tipo de mantenimiento</th>
                             <th>vehículo</th>
                             <th>Estado</th>
                             <th>Observación</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,12 +60,13 @@ SisAutomotor - Mantenimientos programados
 @section('script_files')
 <script src="{{ asset('custom/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('custom/vendor/datatables/dataTables.responsive.min.js') }}"></script>
 @endsection
 
 @section('script')
 <script type="text/javascript">
   $(function () {
-    var table = $('.user_datatable').DataTable({
+    var table = $('#dtMain').DataTable({
         language: {
             url: "{{ asset('custom/vendor/datatables/datatables.es.json') }}"
         },
@@ -74,13 +76,13 @@ SisAutomotor - Mantenimientos programados
         serverSide: true,
         ajax: "{{ route('programa_mantenimiento.getList') }}",
         columns: [
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
             {data: 'fecha', name: 'fecha'},
             {data: 'tipo_mantenimiento', name: 'tipo_mantenimiento'},
             {data: 'vehiculo', name: 'vehiculo'},
             {data: 'estado', name: 'estado'},
-            {data: 'obs', name: 'obs'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'obs', name: 'obs'}
         ]
     });
   });

@@ -157,10 +157,12 @@ class RepuestoController extends Controller
     public function destroy($id)
     {
         $model = Repuesto::find($id);
-        $model->delete();
+        $model->estado = 'INACTIVO';
+        $model->save();
+        //$model->delete();
     
         return redirect()->route('repuesto.index')
-            ->with('success','El repuesto fue eliminado correctamente.');
+            ->with('success','El repuesto fue desactivado correctamente.');
     }
 
     /**
@@ -184,7 +186,7 @@ class RepuestoController extends Controller
                         $btn .= '<a href="'.route('repuesto.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('repuesto-delete')) {
-                        $btn .= '<form method="POST" action="'.route('repuesto.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('repuesto.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Desactivar" alt="Desactivar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                 })

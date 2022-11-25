@@ -48,7 +48,7 @@ SisAutomotor - Tipos de mantenimiento
                             <div class="form-group">
                                 <strong>Estado:</strong>
                                 <select name="estado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     <option value="ACTIVO" @if ($tipo_mantenimiento->estado == 'ACTIVO') selected @endif>ACTIVO</option>
                                     <option value="INACTIVO" @if ($tipo_mantenimiento->estado == 'INACTIVO') selected @endif>INACTIVO</option>
                                 </select>

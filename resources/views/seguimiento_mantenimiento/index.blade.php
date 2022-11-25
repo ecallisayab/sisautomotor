@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Tipos de mantenimiento
+SisAutomotor - Seguimiento a mantenimiento
 @endsection
 
 @section('style_files')
@@ -16,10 +16,20 @@ SisAutomotor - Tipos de mantenimiento
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
+            <div class="card-body alert-primary">
+                <strong>MANTENIMIENTO N°: {{ $id_mantenimiento }}</strong>
+                <a class="btn btn-secondary btn-sm" href="{{ route('mantenimiento.index') }}" style="float: right;">
+                    <i class="fa fa-arrow-left"></i>
+                    &nbsp;Atrás
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Listado de tipos de mantenimiento</h5>
-                @can('tipo_mantenimiento-create')
-                <a class="btn btn-primary" href="{{ route('tipo_mantenimiento.create') }}">
+                <h5>Listado de seguimiento</h5>
+                @can('seg_mantenimiento-create')
+                <a class="btn btn-primary" href="{{ route('seguimiento_mantenimiento.create', $id_mantenimiento) }}">
                     <i class="fa fa-plus"></i>
                     &nbsp;Nuevo
                 </a>
@@ -41,8 +51,10 @@ SisAutomotor - Tipos de mantenimiento
                         <tr>
                             <th>Acciones</th>
                             <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Estado</th>
+                            <th>Fecha y hora</th>
+                            <th>Descripción</th>
+                            <th>Resp. de transportes</th>
+                            <th>Observación</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,12 +83,14 @@ SisAutomotor - Tipos de mantenimiento
         searchDelay: 500,
         processing: true,
         serverSide: true,
-        ajax: "{{ route('tipo_mantenimiento.getList') }}",
+        ajax: "{{ route('seguimiento_mantenimiento.getList', $id_mantenimiento) }}",
         columns: [
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
-            {data: 'nombre', name: 'nombre'},
-            {data: 'estado', name: 'estado'}
+            {data: 'fecha_hora', name: 'fecha_hora'},
+            {data: 'descrip', name: 'descrip'},
+            {data: 'empleado', name: 'empleado'},
+            {data: 'obs', name: 'obs'}
         ]
     });
   });

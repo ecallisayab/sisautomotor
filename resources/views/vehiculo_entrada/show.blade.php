@@ -25,7 +25,7 @@ SisAutomotor - Entrada de Vehículo
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <strong>N° de entradas:</strong>
+                            <strong>N° de entrada:</strong>
                             {{ $vehiculo_entrada[0]->id }}
                         </div>
                     </div>

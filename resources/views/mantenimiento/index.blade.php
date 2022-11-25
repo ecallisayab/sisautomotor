@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Tipos de mantenimiento
+SisAutomotor - Mantenimiento
 @endsection
 
 @section('style_files')
@@ -17,9 +17,9 @@ SisAutomotor - Tipos de mantenimiento
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Listado de tipos de mantenimiento</h5>
-                @can('tipo_mantenimiento-create')
-                <a class="btn btn-primary" href="{{ route('tipo_mantenimiento.create') }}">
+                <h5>Listado de mantenimiento</h5>
+                @can('mantenimiento_entrada-create')
+                <a class="btn btn-primary" href="{{ route('mantenimiento_entrada.create') }}">
                     <i class="fa fa-plus"></i>
                     &nbsp;Nuevo
                 </a>
@@ -41,7 +41,11 @@ SisAutomotor - Tipos de mantenimiento
                         <tr>
                             <th>Acciones</th>
                             <th>ID</th>
-                            <th>Nombre</th>
+                            <th>Tipo de mantenimiento</th>
+                            <th>Vehículo</th>
+                            <th>Diagnóstico</th>
+                            <th>Fecha y hora de entrada</th>
+                            <th>Fecha y hora de salida</th>
                             <th>Estado</th>
                         </tr>
                     </thead>
@@ -71,11 +75,15 @@ SisAutomotor - Tipos de mantenimiento
         searchDelay: 500,
         processing: true,
         serverSide: true,
-        ajax: "{{ route('tipo_mantenimiento.getList') }}",
+        ajax: "{{ route('mantenimiento.getList') }}",
         columns: [
             {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
-            {data: 'nombre', name: 'nombre'},
+            {data: 'tipo_mantenimiento', name: 'tipo_mantenimiento'},
+            {data: 'vehiculo', name: 'vehiculo'},
+            {data: 'diagnostico_entrada', name: 'diagnostico_entrada'},
+            {data: 'fecha_hora_entrada', name: 'fecha_hora_entrada'},
+            {data: 'fecha_hora_salida', name: 'fecha_hora_salida'},
             {data: 'estado', name: 'estado'}
         ]
     });

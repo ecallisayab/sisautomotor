@@ -25,6 +25,14 @@ SisAutomotor - Vechiculo
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
+                            <strong>N° de vehículo:</strong>
+                            {{ $vehiculo->id }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
                             <strong>Matricula:</strong>
                             {{ $vehiculo->matricula }}
                         </div>

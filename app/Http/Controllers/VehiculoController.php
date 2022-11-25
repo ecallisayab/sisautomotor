@@ -19,10 +19,10 @@ class VehiculoController extends Controller
      */
     function __construct()
     {
-            //$this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
-            //$this->middleware('permission:product-create', ['only' => ['create','store']]);
-            //$this->middleware('permission:product-edit', ['only' => ['edit','update']]);
-            //$this->middleware('permission:product-delete', ['only' => ['destroy']]);
+            $this->middleware('permission:vehiculo-list|vehiculo-create|vehiculo-edit|vehiculo-delete', ['only' => ['index','show']]);
+            $this->middleware('permission:vehiculo-create', ['only' => ['create','store']]);
+            $this->middleware('permission:vehiculo-edit', ['only' => ['edit','update']]);
+            $this->middleware('permission:vehiculo-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -63,11 +63,11 @@ class VehiculoController extends Controller
         ]);
 
         // Verifica que el registro no exista en la bd
-        // $registro = Proveedor::where('nombre', '=', $request->get('nombre'))->get();
-        // if (!$registro->isEmpty()) {
-        //     return redirect()->route('proveedor.index')
-        //         ->with('warning','No se pudo registrar el proveedor porque ya existe.');
-        // }
+        $registro = Vehiculo::where('matricula', '=', $request->get('matricula'))->get();
+        if (!$registro->isEmpty()) {
+            return redirect()->route('vehiculo.index')
+                ->with('warning','No se pudo registrar el vehículo porque ya existe.');
+        }
 
         // Guarda el registro en la bd
         $model = new Vehiculo();
@@ -167,11 +167,13 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        $model = Proveedor::find($id);
-        $model->delete();
+        $model = Vehiculo::find($id);
+        $model->estado = 'INACTIVO';
+        $model->save();
+        //$model->delete();
     
-        return redirect()->route('proveedor.index')
-            ->with('success','El proveedor fue eliminado correctamente.');
+        return redirect()->route('vehiculo.index')
+            ->with('success','El vehiculo fue desactivado correctamente.');
     }
 
     /**
@@ -195,7 +197,7 @@ class VehiculoController extends Controller
                         $btn .= '<a href="'.route('vehiculo.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('vehiculo-delete')) {
-                        $btn .= '<form method="POST" action="'.route('vehiculo.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('vehiculo.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Desactivar" alt="Desactivar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                     

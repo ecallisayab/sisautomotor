@@ -39,14 +39,14 @@ SisAutomotor - Mantenimientos programados
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
+                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d',time()+(86400*30)) }}" required>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Tipo de mantenimiento:</label>
                                 <select name="id_tipo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($tipos_mantenimiento as $item)
                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                                     @endforeach
@@ -57,7 +57,7 @@ SisAutomotor - Mantenimientos programados
                             <div class="form-group">
                                 <label>Vehiculo:</label>
                                 <select name="id_vehiculo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($vehiculos as $item)
                                     <option value="{{ $item->id }}">{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
                                     @endforeach

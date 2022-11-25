@@ -15,7 +15,7 @@ SisAutomotor - Vehiculo
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Editar vehiculo</h5>
+                <h5>Editar vehículo</h5>
                 <a class="btn btn-secondary btn-sm" href="{{ route('vehiculo.index') }}">
                     <i class="fa fa-arrow-left"></i>
                     &nbsp;Atrás
@@ -38,7 +38,7 @@ SisAutomotor - Vehiculo
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Matricula:</label>
+                                <label>Matrícula:</label>
                                 <input type="text" name="matricula" value="{{ $vehiculo->matricula }}" class="form-control" placeholder="Matricula" required>
                             </div>
                         </div>
@@ -80,12 +80,10 @@ SisAutomotor - Vehiculo
                             <div class="form-group">
                                 <label>Estado:</label>
                                 <select name="estado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     <option value="ACTIVO" @if ($vehiculo->estado == 'ACTIVO') selected @endif>ACTIVO</option>
                                     <option value="INACTIVO" @if ($vehiculo->estado == 'INACTIVO') selected @endif>INACTIVO</option>
                                     <option value="EN_MANTENIMIENTO" @if ($vehiculo->estado == 'EN_MANTENIMIENTO') selected @endif>EN MANTENIMIENTO</option>
-                                    <option value="DISPONIBLE" @if ($vehiculo->estado == 'DISPONIBLE') selected @endif>DISPONIBLE</option>
-                                    <option value="NO_DISPONIBLE" @if ($vehiculo->estado == 'NO_DISPONIBLE') selected @endif>NO DISPONIBLE</option>
                                 </select>
                             </div>
                         </div>

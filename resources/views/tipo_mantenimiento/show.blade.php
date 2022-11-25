@@ -25,6 +25,14 @@ SisAutomotor - Tipos de mantenimiento
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
+                            <strong>N° de registro:</strong>
+                            {{ $tipo_mantenimiento->id }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
                             <strong>Nombre:</strong>
                             {{ $tipo_mantenimiento->nombre }}
                         </div>

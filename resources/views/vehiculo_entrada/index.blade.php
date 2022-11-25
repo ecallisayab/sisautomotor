@@ -6,6 +6,7 @@ SisAutomotor - Entrada de Vehículo
 
 @section('style_files')
 <link href="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ asset('custom/vendor/datatables/responsive.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('style')
@@ -35,16 +36,16 @@ SisAutomotor - Entrada de Vehículo
                 </div>
                 @endif
 
-                <table class="table table-bordered table-hover user_datatable">
+                <table class="table table-bordered table-hover nowrap" style="width:100%" id="dtMain">
                     <thead>
                         <tr>
+                            <th>Acciones</th>
                             <th>ID</th>
                             <th>Fecha y hora</th>
                             <th>Responsable transportes</th>
                             <th>Vehículo</th>
                             <th>Resp. vehículo</th>
                             <th>Obs.</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,12 +60,13 @@ SisAutomotor - Entrada de Vehículo
 @section('script_files')
 <script src="{{ asset('custom/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('custom/vendor/datatables/dataTables.responsive.min.js') }}"></script>
 @endsection
 
 @section('script')
 <script type="text/javascript">
   $(function () {
-    var table = $('.user_datatable').DataTable({
+    var table = $('#dtMain').DataTable({
         language: {
             url: "{{ asset('custom/vendor/datatables/datatables.es.json') }}"
         },
@@ -74,13 +76,13 @@ SisAutomotor - Entrada de Vehículo
         serverSide: true,
         ajax: "{{ route('vehiculo_entrada.getList') }}",
         columns: [
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
             {data: 'fecha_hora', name: 'fecha_hora'},
             {data: 'empleado', name: 'empleado'},
             {data: 'vehiculo', name: 'vehiculo'},
             {data: 'resp_vehiculo', name: 'resp_vehiculo'},
-            {data: 'obs', name: 'obs'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'obs', name: 'obs'}
         ]
     });
   });

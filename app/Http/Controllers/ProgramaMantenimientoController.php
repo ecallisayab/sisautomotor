@@ -168,10 +168,12 @@ class ProgramaMantenimientoController extends Controller
     public function destroy($id)
     {
         $model = ProgramaMantenimiento::find($id);
-        $model->delete();
+        $model->estado = 'CANCELADO';
+        $model->save();
+        //$model->delete();
     
         return redirect()->route('programa_mantenimiento.index')
-            ->with('success','El mantenimiento programado fue eliminado correctamente.');
+            ->with('success','El mantenimiento programado fue cancelado correctamente.');
     }
 
     /**
@@ -195,7 +197,7 @@ class ProgramaMantenimientoController extends Controller
                         $btn .= '<a href="'.route('programa_mantenimiento.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('programa_mantenimiento-delete')) {
-                        $btn .= '<form method="POST" action="'.route('programa_mantenimiento.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('programa_mantenimiento.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Cancelar" alt="Cancelar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                 })

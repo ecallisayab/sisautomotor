@@ -149,10 +149,12 @@ class TipoMantenimientoController extends Controller
     public function destroy($id)
     {
         $model = TipoMantenimiento::find($id);
-        $model->delete();
+        $model->estado = 'INACTIVO';
+        $model->save();
+        //$model->delete();
     
         return redirect()->route('tipo_mantenimiento.index')
-            ->with('success','El tipo de mantenimiento fue eliminado correctamente.');
+            ->with('success','El tipo de mantenimiento fue desactivado correctamente.');
     }
 
     /**
@@ -176,7 +178,7 @@ class TipoMantenimientoController extends Controller
                         $btn .= '<a href="'.route('tipo_mantenimiento.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('tipo_mantenimiento-delete')) {
-                        $btn .= '<form method="POST" action="'.route('tipo_mantenimiento.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('tipo_mantenimiento.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Desactivar" alt="Desactivar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                 })

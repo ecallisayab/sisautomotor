@@ -39,14 +39,14 @@ SisAutomotor - Entradas de Vehículos
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" required>
+                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Resp. de transportes:</label>
                                 <select name="id_empleado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($empleados as $item)
                                     <option value="{{ $item->id }}">{{ $item->empleado }}</option>
                                     @endforeach
@@ -59,7 +59,7 @@ SisAutomotor - Entradas de Vehículos
                             <div class="form-group">
                                 <label>Vehículo:</label>
                                 <select name="id_vehiculo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($vehiculos as $item)
                                     <option value="{{ $item->id }}">{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
                                     @endforeach

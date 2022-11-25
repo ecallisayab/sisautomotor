@@ -46,7 +46,7 @@ SisAutomotor - Mantenimientos programados
                             <div class="form-group">
                                 <label>Tipo de mantenimiento:</label>
                                 <select name="id_tipo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($tipos_mantenimiento as $item)
                                     <option value="{{ $item->id }}" @if ($programacion_mantenimiento->id_tipo == $item->id) selected @endif>{{ $item->nombre }}</option>
                                     @endforeach
@@ -57,7 +57,7 @@ SisAutomotor - Mantenimientos programados
                             <div class="form-group">
                                 <label>Vehiculo:</label>
                                 <select name="id_vehiculo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($vehiculos as $item)
                                     <option value="{{ $item->id }}" @if ($programacion_mantenimiento->id_vehiculo == $item->id) selected @endif>{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
                                     @endforeach

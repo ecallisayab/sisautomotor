@@ -35,13 +35,13 @@ SisAutomotor - Combustibles
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Desde fecha:</label>
-                                <input type="date" name="fecha_desde" class="form-control" placeholder="Desde fecha" required>
+                                <input type="date" name="fecha_desde" class="form-control" placeholder="Desde fecha" min="2022-01-01" max="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Hasta fecha:</label>
-                                <input type="date" name="fecha_hasta" class="form-control" placeholder="Hasta fecha" required>
+                                <input type="date" name="fecha_hasta" class="form-control" placeholder="Hasta fecha" min="2022-01-01" max="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                     </div>

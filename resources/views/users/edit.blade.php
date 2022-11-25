@@ -24,7 +24,7 @@ SisAutomotor - Usuarios
             <div class="card-body">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Advertencia!</strong> Hubo algunos problemas con la entrada de datos.<br><br>
+                    <label>Advertencia!</label> Hubo algunos problemas con la entrada de datos.<br><br>
                     <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -37,13 +37,13 @@ SisAutomotor - Usuarios
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <strong>Nombre:</strong>
+                            <label>Nombre:</label>
                             {!! Form::text('name', null, array('placeholder' => 'Nombre','class' => 'form-control', 'required' => true)) !!}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <strong>Correo-e:</strong>
+                            <label>Correo-e:</label>
                             {!! Form::text('email', null, array('placeholder' => 'Correo-e','class' => 'form-control', 'required' => true)) !!}
                         </div>
                     </div>
@@ -51,13 +51,13 @@ SisAutomotor - Usuarios
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <strong>Contraseña:</strong>
+                            <label>Contraseña:</label>
                             {!! Form::password('password', array('placeholder' => 'Contraseña','class' => 'form-control')) !!}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <strong>Confirmar contraseña:</strong>
+                            <label>Confirmar contraseña:</label>
                             {!! Form::password('confirm-password', array('placeholder' => 'Confirmar contraseña','class' => 'form-control')) !!}
                         </div>
                     </div>
@@ -65,7 +65,7 @@ SisAutomotor - Usuarios
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <strong>Role (una o varias opciones):</strong>
+                            <label>Role (una o varias opciones):</label>
                             {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple', 'required' => true)) !!}
                         </div>
                     </div>

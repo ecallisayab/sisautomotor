@@ -38,7 +38,7 @@ SisAutomotor - Permisos
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <strong>Nombre:</strong>
+                                <label>Nombre:</label>
                                 <input type="text" name="name" value="{{ $permiso->name }}" class="form-control" placeholder="Nombre" required>
                             </div>
                         </div>

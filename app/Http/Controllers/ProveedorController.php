@@ -162,10 +162,12 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         $model = Proveedor::find($id);
-        $model->delete();
+        $model->estado = 'INACTIVO';
+        $model->save();
+        //$model->delete();
     
         return redirect()->route('proveedor.index')
-            ->with('success','El proveedor fue eliminado correctamente.');
+            ->with('success','El proveedor fue desactivado correctamente.');
     }
 
     /**
@@ -189,7 +191,7 @@ class ProveedorController extends Controller
                         $btn .= '<a href="'.route('proveedor.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('proveedor-delete')) {
-                        $btn .= '<form method="POST" action="'.route('proveedor.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('proveedor.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Desactivar" alt="Desactivar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                     

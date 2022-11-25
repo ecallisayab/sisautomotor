@@ -38,7 +38,7 @@ SisAutomotor - Proveedores
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <strong>Nombre:</strong>
+                                <label>Nombre:</label>
                                 <input type="text" name="nombre" value="{{ $proveedor->nombre }}" class="form-control" placeholder="Nombre" required>
                             </div>
                         </div>
@@ -78,9 +78,9 @@ SisAutomotor - Proveedores
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <strong>Estado:</strong>
+                                <label>Estado:</label>
                                 <select name="estado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     <option value="ACTIVO" @if ($proveedor->estado == 'ACTIVO') selected @endif>ACTIVO</option>
                                     <option value="INACTIVO" @if ($proveedor->estado == 'INACTIVO') selected @endif>INACTIVO</option>
                                 </select>

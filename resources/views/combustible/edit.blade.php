@@ -48,7 +48,7 @@ SisAutomotor - Combustibles
                             <div class="form-group">
                                 <strong>Estado:</strong>
                                 <select name="estado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     <option value="ACTIVO" @if ($combustible->estado == 'ACTIVO') selected @endif>ACTIVO</option>
                                     <option value="INACTIVO" @if ($combustible->estado == 'INACTIVO') selected @endif>INACTIVO</option>
                                 </select>

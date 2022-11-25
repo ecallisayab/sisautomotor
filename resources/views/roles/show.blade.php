@@ -1,5 +1,15 @@
 @extends('custom.app')
 
+@section('title')
+SisAutomotor - Roles
+@endsection
+
+@section('style_files')
+@endsection
+
+@section('style')
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -13,6 +23,12 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <strong>N° de registro:</strong>
+                            {{ $role->id }}
+                        </div>
+                    </div>
                     <div class="col-lg-12">
                         <div class="form-group">
                             <strong>Nombre:</strong>
@@ -34,6 +50,10 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('script_files')
+@endsection
 
+@section('script')
 @endsection

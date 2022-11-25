@@ -40,14 +40,14 @@ SisAutomotor - Entradas de Combustible
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" value="{{ $combustible_entrada->fecha }}" required>
+                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" value="{{ $combustible_entrada->fecha }}" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Combustible:</label>
                                 <select name="id_combustible" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($combustibles as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_entrada->id_combustible == $item->id) selected @endif>{{ $item->nombre }}</option>
                                     @endforeach
@@ -66,7 +66,7 @@ SisAutomotor - Entradas de Combustible
                             <div class="form-group">
                                 <label>Resp. de transportes:</label>
                                 <select name="id_empleado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($empleados as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_entrada->id_empleado == $item->id) selected @endif>{{ $item->empleado }}</option>
                                     @endforeach
@@ -77,7 +77,7 @@ SisAutomotor - Entradas de Combustible
                             <div class="form-group">
                                 <label>Proveedor:</label>
                                 <select name="id_proveedor" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($proveedores as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_entrada->id_proveedor == $item->id) selected @endif>{{ $item->nombre }}</option>
                                     @endforeach

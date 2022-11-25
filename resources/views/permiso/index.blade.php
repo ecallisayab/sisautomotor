@@ -6,6 +6,7 @@ SisAutomotor - Permisos
 
 @section('style_files')
 <link href="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ asset('custom/vendor/datatables/responsive.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('style')
@@ -35,12 +36,12 @@ SisAutomotor - Permisos
                 </div>
                 @endif
 
-                <table class="table table-bordered table-hover user_datatable">
+                <table class="table table-bordered table-hover nowrap" style="width:100%" id="dtMain">
                     <thead>
                         <tr>
+                            <th>Acciones</th>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,12 +56,13 @@ SisAutomotor - Permisos
 @section('script_files')
 <script src="{{ asset('custom/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('custom/vendor/datatables/dataTables.responsive.min.js') }}"></script>
 @endsection
 
 @section('script')
 <script type="text/javascript">
   $(function () {
-    var table = $('.user_datatable').DataTable({
+    var table = $('#dtMain').DataTable({
         language: {
             url: "{{ asset('custom/vendor/datatables/datatables.es.json') }}"
         },
@@ -70,9 +72,9 @@ SisAutomotor - Permisos
         serverSide: true,
         ajax: "{{ route('permiso.getList') }}",
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'}
         ]
     });
   });

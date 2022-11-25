@@ -191,9 +191,11 @@ class CombustibleSalidaController extends Controller
                     if ($user->can('combustible_salida-edit')) {
                         $btn .= '<a href="'.route('combustible_salida.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
+                    /*
                     if ($user->can('combustible_salida-delete')) {
                         $btn .= '<form method="POST" action="'.route('combustible_salida.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
                     }
+                    */
                     return $btn;
                 })
                 ->rawColumns(['action'])

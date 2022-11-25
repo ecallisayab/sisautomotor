@@ -6,6 +6,7 @@ SisAutomotor - Salidas de Combustible
 
 @section('style_files')
 <link href="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ asset('custom/vendor/datatables/responsive.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('style')
@@ -35,9 +36,10 @@ SisAutomotor - Salidas de Combustible
                 </div>
                 @endif
 
-                <table class="table table-bordered table-hover user_datatable">
+                <table class="table table-bordered table-hover nowrap" style="width:100%" id="dtMain">
                     <thead>
                         <tr>
+                            <th>Acciones</th>
                             <th>ID</th>
                             <th>Fecha y hora</th>
                             <th>Combustible</th>
@@ -46,7 +48,6 @@ SisAutomotor - Salidas de Combustible
                             <th>Vehículo</th>
                             <th>Resp. vehículo</th>
                             <th>Obs.</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,12 +62,13 @@ SisAutomotor - Salidas de Combustible
 @section('script_files')
 <script src="{{ asset('custom/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('custom/vendor/datatables/dataTables.responsive.min.js') }}"></script>
 @endsection
 
 @section('script')
 <script type="text/javascript">
   $(function () {
-    var table = $('.user_datatable').DataTable({
+    var table = $('#dtMain').DataTable({
         language: {
             url: "{{ asset('custom/vendor/datatables/datatables.es.json') }}"
         },
@@ -76,6 +78,7 @@ SisAutomotor - Salidas de Combustible
         serverSide: true,
         ajax: "{{ route('combustible_salida.getList') }}",
         columns: [
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
             {data: 'fecha_hora', name: 'fecha_hora'},
             {data: 'combustible', name: 'combustible'},
@@ -83,8 +86,7 @@ SisAutomotor - Salidas de Combustible
             {data: 'empleado', name: 'empleado'},
             {data: 'vehiculo', name: 'vehiculo'},
             {data: 'resp_vehiculo', name: 'resp_vehiculo'},
-            {data: 'obs', name: 'obs'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'obs', name: 'obs'}
         ]
     });
   });

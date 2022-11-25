@@ -167,13 +167,13 @@ class PermisoController extends Controller
                 ->addColumn('action', function($row) use ($user) {
                     $btn = "";
                     if ($user->can('permiso-list')) {
-                        $btn .= '<a href="'.route('permiso.show', $row->id).'" class="btn btn-secondary btn-sm" title="Ver" alt="Ver"><i class="fa fa-eye"></i></a>&nbsp;';
+                        $btn .= '<a href="'.route('permiso.show', $row->id).'" class="btn btn-secondary btn-sm">Ver</a>&nbsp;';
                     }
                     if ($user->can('permiso-edit')) {
-                        $btn .= '<a href="'.route('permiso.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
+                        $btn .= '<a href="'.route('permiso.edit', $row->id).'" class="btn btn-primary btn-sm">Editar</a>&nbsp;';
                     }
                     if ($user->can('permiso-delete')) {
-                        $btn .= '<form method="POST" action="'.route('permiso.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('permiso.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit">Eliminar</button></form>';
                     }
                     return $btn;
                 })

@@ -47,7 +47,7 @@ SisAutomotor - Salidas de Combustible
                             <div class="form-group">
                                 <label>Combustible:</label>
                                 <select name="id_combustible" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($combustibles as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_salida->id_combustible == $item->id) selected @endif>{{ $item->nombre }}</option>
                                     @endforeach
@@ -66,7 +66,7 @@ SisAutomotor - Salidas de Combustible
                             <div class="form-group">
                                 <label>Resp. de transportes:</label>
                                 <select name="id_empleado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($empleados as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_salida->id_empleado == $item->id) selected @endif>{{ $item->empleado }}</option>
                                     @endforeach
@@ -77,7 +77,7 @@ SisAutomotor - Salidas de Combustible
                             <div class="form-group">
                                 <label>Vehículo:</label>
                                 <select name="id_vehiculo" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     @foreach ($vehiculos as $item)
                                     <option value="{{ $item->id }}" @if ($combustible_salida->id_vehiculo == $item->id) selected @endif>{{ $item->marca.' '.$item->modelo.' ['.$item->matricula.']' }}</option>
                                     @endforeach

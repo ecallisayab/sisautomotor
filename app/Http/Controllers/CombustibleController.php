@@ -148,10 +148,12 @@ class CombustibleController extends Controller
     public function destroy($id)
     {
         $model = Combustible::find($id);
-        $model->delete();
+        $model->estado = 'INACTIVO';
+        $model->save();
+        //$model->delete();
     
         return redirect()->route('combustible.index')
-            ->with('success','El combustible fue eliminado correctamente.');
+            ->with('success','El combustible fue desactivado correctamente.');
     }
 
     /**
@@ -175,7 +177,7 @@ class CombustibleController extends Controller
                         $btn .= '<a href="'.route('combustible.edit', $row->id).'" class="btn btn-primary btn-sm" title="Editar" alt="Editar"><i class="fa fa-edit"></i></a>&nbsp;';
                     }
                     if ($user->can('combustible-delete')) {
-                        $btn .= '<form method="POST" action="'.route('combustible.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Eliminar" alt="Eliminar"><i class="fa fa-trash"></i></button></form>';
+                        $btn .= '<form method="POST" action="'.route('combustible.destroy', $row->id).'" style="display: inline;"><input name="_method" type="hidden" value="DELETE"><input type="hidden" name="_token" value="'.csrf_token().'" /><button class="btn btn-danger btn-sm" type="submit" title="Desactivar" alt="Desactivar"><i class="fa fa-times"></i></button></form>';
                     }
                     return $btn;
                 })

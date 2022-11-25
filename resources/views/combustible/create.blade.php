@@ -48,7 +48,7 @@ SisAutomotor - Combustibles
                             <div class="form-group">
                                 <label>Estado:</label>
                                 <select name="estado" class="form-control" required>
-                                    <option value=""--Seleccione una opción--></option>
+                                    <option value="">--Seleccione una opción--</option>
                                     <option value="ACTIVO">ACTIVO</option>
                                     <option value="INACTIVO">INACTIVO</option>
                                 </select>

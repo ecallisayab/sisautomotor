@@ -6,6 +6,7 @@ SisAutomotor - Combustibles
 
 @section('style_files')
 <link href="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ asset('custom/vendor/datatables/responsive.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('style')
@@ -35,13 +36,13 @@ SisAutomotor - Combustibles
                 </div>
                 @endif
 
-                <table class="table table-bordered table-hover user_datatable">
+                <table class="table table-bordered table-hover nowrap" style="width:100%" id="dtMain">
                     <thead>
                         <tr>
+                            <th>Acciones</th>
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,12 +57,13 @@ SisAutomotor - Combustibles
 @section('script_files')
 <script src="{{ asset('custom/vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('custom/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('custom/vendor/datatables/dataTables.responsive.min.js') }}"></script>
 @endsection
 
 @section('script')
 <script type="text/javascript">
   $(function () {
-    var table = $('.user_datatable').DataTable({
+    var table = $('#dtMain').DataTable({
         language: {
             url: "{{ asset('custom/vendor/datatables/datatables.es.json') }}"
         },
@@ -71,10 +73,10 @@ SisAutomotor - Combustibles
         serverSide: true,
         ajax: "{{ route('combustible.getList') }}",
         columns: [
+            {data: 'action', name: 'action', orderable: false, searchable: false},
             {data: 'id', name: 'id'},
             {data: 'nombre', name: 'nombre'},
-            {data: 'estado', name: 'estado'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'estado', name: 'estado'}
         ]
     });
   });

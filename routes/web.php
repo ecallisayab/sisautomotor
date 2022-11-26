@@ -192,4 +192,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/reportes/combustible/entradas', [App\Http\Controllers\ReporteCombustibleController::class, 'get_entradas'])->name('reporte_combustible.get_entradas');
     Route::get('/reportes/combustible/salidas', [App\Http\Controllers\ReporteCombustibleController::class, 'view_salidas_form'])->name('reporte_combustible.view_salidas_form');
     Route::post('/reportes/combustible/salidas', [App\Http\Controllers\ReporteCombustibleController::class, 'get_salidas'])->name('reporte_combustible.get_salidas');
+    Route::get('/reportes/combustible/consumo', [App\Http\Controllers\ReporteCombustibleController::class, 'view_consumo_form'])->name('reporte_combustible.view_consumo_form');
+    Route::post('/reportes/combustible/consumo', [App\Http\Controllers\ReporteCombustibleController::class, 'get_consumo'])->name('reporte_combustible.get_consumo');
+    Route::get('/reportes/vehiculo/entradas', [App\Http\Controllers\ReporteVehiculoController::class, 'view_entradas_form'])->name('reporte_vehiculo.view_entradas_form');
+    Route::post('/reportes/vehiculo/entradas', [App\Http\Controllers\ReporteVehiculoController::class, 'get_entradas'])->name('reporte_vehiculo.get_entradas');
+    Route::get('/reportes/vehiculo/salidas', [App\Http\Controllers\ReporteVehiculoController::class, 'view_salidas_form'])->name('reporte_vehiculo.view_salidas_form');
+    Route::post('/reportes/vehiculo/salidas', [App\Http\Controllers\ReporteVehiculoController::class, 'get_salidas'])->name('reporte_vehiculo.get_salidas');
 });

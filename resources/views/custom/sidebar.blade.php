@@ -106,8 +106,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         @can('reporte-list')
-                        <a class="collapse-item" href="{{ route('reporte_combustible.view_entradas_form') }}">Entradas de combustible</a>
-                        <a class="collapse-item" href="{{ route('reporte_combustible.view_salidas_form') }}">Salidas de combustible</a>
+                        <a class="collapse-item" href="{{ route('reporte_combustible.view_entradas_form') }}">Entrada de combustible</a>
+                        <a class="collapse-item" href="{{ route('reporte_combustible.view_salidas_form') }}">Salida de combustible</a>
+                        <a class="collapse-item" href="{{ route('reporte_combustible.view_consumo_form') }}">Consumo de combustible</a>
                         @endcan
                     </div>
                 </div>

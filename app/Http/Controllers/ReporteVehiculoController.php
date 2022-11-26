@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
     
-class ReporteCombustibleController extends Controller
+class ReporteVehiculoController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class ReporteCombustibleController extends Controller
 
     public function view_entradas_form()
     {
-        return view('reporte_combustible.entradas_form');
+        return view('reporte_vehiculo.entradas_form');
     }
 
     public function get_entradas(Request $request)
@@ -27,20 +27,17 @@ class ReporteCombustibleController extends Controller
         $fecha_desde = $request->get('fecha_desde');
         $fecha_hasta = $request->get('fecha_hasta');
 
-        $sql = "SELECT 
+        $sql = "SELECT
         t1.id,
         CONCAT( DATE_FORMAT( t1.fecha, '%d/%m/%Y' ), ' ', t1.hora ) AS fecha_hora,
-        t2.nombre AS combustible,
-        t1.cantidad,
-        t4.empleado,
-        t3.nombre AS proveedor,
-        t1.emp_proveedor,
+        CONCAT( t2.marca, ' ', t2.modelo, ' [', t2.matricula, ']' ) AS vehiculo,
+        t3.empleado,
+        t1.resp_vehiculo,
         t1.obs 
         FROM
-        combustible_entrada t1
-        INNER JOIN combustible t2 ON t1.id_combustible = t2.id
-        INNER JOIN proveedor t3 ON t1.id_proveedor = t3.id
-        INNER JOIN view_empleados t4 ON t1.id_empleado = t4.id
+        vehiculo_entrada t1
+        INNER JOIN vehiculo t2 ON t1.id_vehiculo = t2.id
+        INNER JOIN view_empleados t3 ON t1.id_empleado = t3.id
         WHERE t1.fecha BETWEEN ? AND ?";
 
         $data = array(
@@ -49,12 +46,12 @@ class ReporteCombustibleController extends Controller
             'reporte' => DB::select($sql, [$fecha_desde, $fecha_hasta])
         );
 
-        return view('reporte_combustible.entradas_res', $data);
+        return view('reporte_vehiculo.entradas_res', $data);
     }
 
     public function view_salidas_form()
     {
-        return view('reporte_combustible.salidas_form');
+        return view('reporte_vehiculo.salidas_form');
     }
 
     public function get_salidas(Request $request)
@@ -84,12 +81,12 @@ class ReporteCombustibleController extends Controller
             'reporte' => DB::select($sql, [$fecha_desde, $fecha_hasta])
         );
 
-        return view('reporte_combustible.salidas_res', $data);
+        return view('reporte_vehiculo.salidas_res', $data);
     }
 
     public function view_consumo_form()
     {
-        return view('reporte_combustible.consumo_form');
+        return view('reporte_vehiculo.consumo_form');
     }
 
     public function get_consumo(Request $request)
@@ -113,7 +110,7 @@ class ReporteCombustibleController extends Controller
             'reporte' => DB::select($sql, [$fecha_desde, $fecha_hasta])
         );
 
-        return view('reporte_combustible.consumo_res', $data);
+        return view('reporte_vehiculo.consumo_res', $data);
     }
 
 }

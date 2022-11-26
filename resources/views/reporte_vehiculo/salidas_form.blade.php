@@ -1,7 +1,7 @@
 @extends('custom.app')
 
 @section('title')
-SisAutomotor - Combustibles
+SisAutomotor - Vehículos
 @endsection
 
 @section('style_files')
@@ -15,7 +15,7 @@ SisAutomotor - Combustibles
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5>Reporte salidas de combustible</h5>
+                <h5>Reporte salidas de vehículos</h5>
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -29,7 +29,7 @@ SisAutomotor - Combustibles
                 </div>
                 @endif
 
-                <form action="{{ route('reporte_combustible.get_salidas') }}" method="POST" autocomplete="off" target="_blank">
+                <form action="{{ route('reporte_vehiculo.get_salidas') }}" method="POST" autocomplete="off" target="_blank">
                     @csrf
                     <div class="row">
                         <div class="col-lg-4">

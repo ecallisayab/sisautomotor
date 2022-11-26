@@ -25,9 +25,10 @@ SisAutomotor - Reportes
                 <tr>
                     <th>N° SALIDA</th>
                     <th>Fecha y hora</th>
-                    <th>Combustible</th>
-                    <th>Cantidad [litros]</th>
-                    <th>Vehículo</th>
+                    <th>Vehiculo</th>
+                    <th>Resp. de transportes</th>
+                    <th>Proyecto</th>
+                    <th>Resp. de vehículo</th>
                     <th>Observación</th>
                 </tr>
             </thead>
@@ -36,9 +37,10 @@ SisAutomotor - Reportes
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->fecha_hora }}</td>
-                    <td>{{ $item->combustible }}</td>
-                    <td>{{ $item->cantidad }}</td>
                     <td>{{ $item->vehiculo }}</td>
+                    <td>{{ $item->empleado }}</td>
+                    <td>{{ $item->proyecto }}</td>
+                    <td>{{ $item->resp_vehiculo }}</td>
                     <td>{{ $item->obs }}</td>
                 </tr>
                 @endforeach

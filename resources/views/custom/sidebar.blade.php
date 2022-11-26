@@ -109,6 +109,8 @@
                         <a class="collapse-item" href="{{ route('reporte_combustible.view_entradas_form') }}">Entrada de combustible</a>
                         <a class="collapse-item" href="{{ route('reporte_combustible.view_salidas_form') }}">Salida de combustible</a>
                         <a class="collapse-item" href="{{ route('reporte_combustible.view_consumo_form') }}">Consumo de combustible</a>
+                        <a class="collapse-item" href="{{ route('reporte_vehiculo.view_entradas_form') }}">Entrada de vehículos</a>
+                        <a class="collapse-item" href="{{ route('reporte_vehiculo.view_salidas_form') }}">Salida de vehículos</a>
                         @endcan
                     </div>
                 </div>

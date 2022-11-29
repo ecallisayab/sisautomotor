@@ -39,7 +39,7 @@ SisAutomotor - Combustibles
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <strong>Nombre:</strong>
-                                <input type="text" name="nombre" value="{{ $combustible->nombre }}" class="form-control" placeholder="Nombre" required>
+                                <input type="text" name="nombre" value="{{ $combustible->nombre }}" class="form-control" placeholder="Nombre" minlength="1" maxlength="50" required>
                             </div>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ SisAutomotor - Combustibles
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" minlength="1" maxlength="50" required>
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" minlength="1" maxlength="50" pattern="(^([a-zA-z_ ]+)(\d+)?$)" required>
                             </div>
                         </div>
                     </div>

@@ -49,7 +49,7 @@ class CombustibleController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'nombre' => 'required|max:50',
+            'nombre' => 'required|max:50|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
             'estado' => 'required|max:20'
         ]);
 
@@ -115,7 +115,7 @@ class CombustibleController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'nombre' => 'required|max:50',
+            'nombre' => 'required|max:50|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
             'estado' => 'required|max:20'
         ]);
 

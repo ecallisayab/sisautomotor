@@ -39,13 +39,13 @@ SisAutomotor - Proveedores
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" minlength="1" maxlength="150" pattern="(^(([a-zA-Z0-9. ]+)?$))" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Dirección:</label>
-                                <input type="text" name="direccion" class="form-control" placeholder="Dirección" required>
+                                <input type="text" name="direccion" class="form-control" placeholder="Dirección" minlength="1" maxlength="300" pattern="(^(([a-zA-Z0-9.,\- ]+)?$))" required>
                             </div>
                         </div>
                     </div>
@@ -53,19 +53,19 @@ SisAutomotor - Proveedores
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Teléfono principal:</label>
-                                <input type="number" name="fono_1" class="form-control" placeholder="Teléfono" required>
+                                <input type="text" name="fono_1" class="form-control" placeholder="Teléfono" minlength="7" maxlength="8" pattern="(^((\d){7,8}?$))" required>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Teléfono secundario:</label>
-                                <input type="number" name="fono_2" class="form-control" placeholder="Teléfono">
+                                <input type="text" name="fono_2" class="form-control" placeholder="Teléfono" minlength="7" maxlength="8" pattern="(^((\d){7,8}?$))">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Correo-e:</label>
-                                <input type="email" name="correo" class="form-control" placeholder="Correo-e">
+                                <input type="email" name="correo" class="form-control" placeholder="Correo-e" minlength="7" maxlength="150">
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ SisAutomotor - Proveedores
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Descripción</label>
-                                <textarea name="descrip" class="form-control" rows="3"></textarea>
+                                <textarea name="descrip" class="form-control" rows="3" maxlength="1000"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-3">

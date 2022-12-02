@@ -45,7 +45,7 @@ SisAutomotor - Salidas de Combustible
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Combustible:</label>
-                                <select name="id_combustible" class="form-control" required>
+                                <select name="id_combustible" class="form-control" id="cboIdCombustible" required>
                                     <option value="">--Seleccione una opción--</option>
                                     @foreach ($combustibles as $item)
                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
@@ -56,7 +56,7 @@ SisAutomotor - Salidas de Combustible
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Cantidad:</label>
-                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" max="500000" step="any" required>
+                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="0" max="" step="any" id="txtCantidad" required>
                             </div>
                         </div>
                     </div>
@@ -114,4 +114,19 @@ SisAutomotor - Salidas de Combustible
 @endsection
 
 @section('script')
+<script type="text/javascript">
+  $(function () {
+    var stockCombustible = <?php echo $combustible_stock; ?>;
+
+    $("#cboIdCombustible").on("change", function() {
+        var stock = stockCombustible[$(this).val()];
+        if (stock === 0) {
+            $("#txtCantidad").attr("min", 0);
+        } else {
+            $("#txtCantidad").attr("min", 1);
+        }
+        $("#txtCantidad").attr("max", stock);
+    });
+  });
+</script>
 @endsection

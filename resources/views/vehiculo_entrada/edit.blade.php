@@ -40,7 +40,7 @@ SisAutomotor - Entrada de Vehículo
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" value="{{ $vehiculo_entrada->fecha }}" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d') }}" required>
+                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" value="{{ $vehiculo_entrada->fecha }}" min="{{ date('Y-m-d') }}" max="{{ date('Y-m-d') }}" required>
                             </div>
                         </div>
                         <div class="col-lg-6">

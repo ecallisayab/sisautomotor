@@ -49,11 +49,11 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'nombre' => 'required',
-            'direccion' => 'required',
-            'fono_1' => 'required',
-            'descrip' => 'required',
-            'estado' => 'required',
+            'nombre' => 'required|max:150|regex:/(^(([a-zA-Z0-9. ]+)?$))/u',
+            'direccion' => 'required|max:300|regex:/(^(([a-zA-Z0-9.,\- ]+)?$))/u',
+            'fono_1' => 'required|max:8|regex:/(^((\d){7,8}?$))/u',
+            'descrip' => 'required|max:1000|regex:/(^(([a-zA-Z0-9.,\- ]+)?$))/u',
+            'estado' => 'required|max:20',
         ]);
 
         // Verifica que el registro no exista en la bd
@@ -123,8 +123,11 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'nombre' => 'required',
-            'estado' => 'required',
+            'nombre' => 'required|max:150|regex:/(^(([a-zA-Z0-9. ]+)?$))/u',
+            'direccion' => 'required|max:300|regex:/(^(([a-zA-Z0-9.,\- ]+)?$))/u',
+            'fono_1' => 'required|max:8|regex:/(^((\d){7,8}?$))/u',
+            'descrip' => 'required|max:1000|regex:/(^(([a-zA-Z0-9.,\- ]+)?$))/u',
+            'estado' => 'required|max:20',
         ]);
 
         // Verifica que el registro no exista en la bd

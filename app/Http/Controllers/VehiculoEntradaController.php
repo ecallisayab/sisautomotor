@@ -60,8 +60,7 @@ class VehiculoEntradaController extends Controller
             'fecha' => 'required|date',
             'id_vehiculo' => 'required|numeric',
             'id_empleado' => 'required|numeric',
-            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u',
-            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u'
         ]);
 
         // Guarda el registro en la bd
@@ -133,8 +132,7 @@ class VehiculoEntradaController extends Controller
             'fecha' => 'required|date',
             'id_vehiculo' => 'required|numeric',
             'id_empleado' => 'required|numeric',
-            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u',
-            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u'
         ]);
     
         $model = VehiculoEntrada::find($id);

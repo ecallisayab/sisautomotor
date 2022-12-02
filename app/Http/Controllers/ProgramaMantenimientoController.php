@@ -42,7 +42,7 @@ class ProgramaMantenimientoController extends Controller
     {
         $data = array(
             'tipos_mantenimiento' => TipoMantenimiento::select('id', 'nombre')->where('estado', 'ACTIVO')->get(),
-            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get()
+            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->whereNotIn('estado', ['EN_MANTENIMIENTO'])->get()
         );
 
         return view('programa_mantenimiento.create', $data);
@@ -75,7 +75,7 @@ class ProgramaMantenimientoController extends Controller
         $model->fecha = $request->get('fecha');
         $model->id_tipo = $request->get('id_tipo');
         $model->id_vehiculo = $request->get('id_vehiculo');
-        $model->estado = 'EN_MANTENIMIENTO';
+        $model->estado = 'EN_ESPERA';
         $model->obs = strtoupper($request->get('obs'));
         $model->save();
     
@@ -114,7 +114,7 @@ class ProgramaMantenimientoController extends Controller
 
         $data = array(
             'tipos_mantenimiento' => TipoMantenimiento::select('id', 'nombre')->where('estado', 'ACTIVO')->get(),
-            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get(),
+            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->whereNotIn('estado', ['EN_MANTENIMIENTO'])->get(),
             'programacion_mantenimiento' => $model
         );
         
@@ -153,7 +153,7 @@ class ProgramaMantenimientoController extends Controller
         $model->fecha = $request->get('fecha');
         $model->id_tipo = $request->get('id_tipo');
         $model->id_vehiculo = $request->get('id_vehiculo');
-        $model->estado = 'EN_MANTENIMIENTO';
+        $model->estado = 'EN_ESPERA';
         $model->obs = strtoupper($request->get('obs'));
         $model->save();
     

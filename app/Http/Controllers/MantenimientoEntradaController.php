@@ -43,7 +43,7 @@ class MantenimientoEntradaController extends Controller
     {
         $data = array(
             'tipos_mantenimiento' => TipoMantenimiento::select('id', 'nombre')->where('estado', 'ACTIVO')->get(),
-            'vehiculos' => Vehiculo::select('id', 'marca', 'modelo', 'matricula')->get(),
+            'vehiculos' => Vehiculo::select('id', 'marca', 'modelo', 'matricula')->where('estado', 'ACTIVO')->orWhere('estado', 'INACTIVO')->get(),
             'empleados' => Empleado::select('id', 'empleado')->get()
         );
 
@@ -62,10 +62,10 @@ class MantenimientoEntradaController extends Controller
             'fecha_entrada' => 'required|date',
             'id_tipo' => 'required',
             'id_vehiculo' => 'required|numeric',
-            'diagnostico_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
-            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'diagnostico_entrada' => 'required|max:255|min:1|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u',
+            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u',
             'id_empleado_entrada' => 'required|numeric',
-            'estado' => 'required|in:EN_PROCESO,CONCLUIDO,CANCELADO'
+            'estado' => 'required|max:50'
         ]);
 
         // Guarda el registro en la bd
@@ -80,6 +80,10 @@ class MantenimientoEntradaController extends Controller
         $model->id_empleado_entrada = $request->get('id_empleado_entrada');
         $model->estado = $request->get('estado');
         $model->save();
+
+        $modelVehiculo = Vehiculo::find($request->get('id_vehiculo'));
+        $modelVehiculo->estado = 'EN_MANTENIMIENTO';
+        $modelVehiculo->save();
     
         return redirect()->route('mantenimiento.index')
             ->with('success','El mantenimiento fue creado correctamente.');
@@ -116,7 +120,7 @@ class MantenimientoEntradaController extends Controller
 
         $data = array(
             'tipos_mantenimiento' => TipoMantenimiento::select('id', 'nombre')->where('estado', 'ACTIVO')->get(),
-            'vehiculos' => Vehiculo::select('id', 'marca', 'modelo', 'matricula')->get(),
+            'vehiculos' => Vehiculo::select('id', 'marca', 'modelo', 'matricula')->where('estado', 'ACTIVO')->orWhere('estado', 'INACTIVO')->get(),
             'empleados' => Empleado::select('id', 'empleado')->get(),
             'mantenimiento_entrada' => $model
         );
@@ -137,10 +141,10 @@ class MantenimientoEntradaController extends Controller
             'fecha_entrada' => 'required|date',
             'id_tipo' => 'required',
             'id_vehiculo' => 'required|numeric',
-            'diagnostico_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
-            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'diagnostico_entrada' => 'required|max:255|min:1|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u',
+            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-Z_ ]+)(\d+)?$)/u',
             'id_empleado_entrada' => 'required|numeric',
-            'estado' => 'required|numeric'
+            'estado' => 'required|max:50'
         ]);
     
         //$model = Mantenimiento::find($id);

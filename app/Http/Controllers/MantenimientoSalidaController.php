@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use App\Models\Mantenimiento;
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
@@ -105,7 +106,13 @@ class MantenimientoSalidaController extends Controller
         $model->obs_salida = strtoupper($request->get('obs_salida'));
         $model->id_empleado_salida = $request->get('id_empleado_salida');
         $model->estado = $request->get('estado');
+
+        $idVehiculo = $model->id_vehiculo;
         $model->save();
+
+        $modelVehiculo = Vehiculo::find($idVehiculo);
+        $modelVehiculo->estado = 'ACTIVO';
+        $modelVehiculo->save();
     
         return redirect()->route('mantenimiento.index')
             ->with('success','El mantenimiento fue modificado correctamente.');

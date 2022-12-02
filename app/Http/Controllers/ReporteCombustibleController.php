@@ -116,4 +116,16 @@ class ReporteCombustibleController extends Controller
         return view('reporte_combustible.consumo_res', $data);
     }
 
+    /*
+     * Reporte de stock de combustible
+     */
+    public function get_stock_combustible(Request $request)
+    {
+        $data = array(
+            'reporte' => DB::table('view_combustible_stock')->select('*')->get()
+        );
+
+        return view('reporte_combustible.stock_res', $data);
+    }
+
 }

@@ -41,10 +41,17 @@ class CombustibleSalidaController extends Controller
      */
     public function create()
     {
+        $res = DB::table('view_combustible_stock')->select('id_combustible', 'stock')->get();
+        $combustibleStock = array();
+        foreach($res as $row) {
+            $combustibleStock[$row->id_combustible] = (int) $row->stock;
+        }
+
         $data = array(
             'combustibles' => Combustible::select('id', 'nombre')->get(),
             'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get(),
-            'empleados' => Empleado::select('id', 'empleado')->get()
+            'empleados' => Empleado::select('id', 'empleado')->get(),
+            'combustible_stock' => json_encode($combustibleStock)
         );
 
         return view('combustible_salida.create', $data);
@@ -59,12 +66,12 @@ class CombustibleSalidaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_combustible' => 'required',
-            'id_vehiculo' => 'required',
-            'id_empleado' => 'required',
-            'cantidad' => 'required',
-            'resp_vehiculo' => 'required',
+            'fecha' => 'required|date',
+            'id_combustible' => 'required|numeric',
+            'id_vehiculo' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'cantidad' => 'required|numeric',
+            'resp_vehiculo' => 'required|max:150|regex:/(^(([a-zA-Z ]+)?$))/u',
         ]);
 
         // Guarda el registro en la bd
@@ -110,12 +117,19 @@ class CombustibleSalidaController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $res = DB::table('view_combustible_stock')->select('id_combustible', 'stock')->get();
+        $combustibleStock = array();
+        foreach($res as $row) {
+            $combustibleStock[$row->id_combustible] = (int) $row->stock;
+        }
+
         $model = CombustibleSalida::find($id);
 
         $data = array(
             'combustibles' => Combustible::select('id', 'nombre')->get(),
             'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get(),
             'empleados' => Empleado::select('id', 'empleado')->get(),
+            'combustible_stock' => json_encode($combustibleStock),
             'combustible_salida' => $model
         );
         
@@ -132,12 +146,12 @@ class CombustibleSalidaController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_combustible' => 'required',
-            'id_vehiculo' => 'required',
-            'id_empleado' => 'required',
-            'cantidad' => 'required',
-            'resp_vehiculo' => 'required',
+            'fecha' => 'required|date',
+            'id_combustible' => 'required|numeric',
+            'id_vehiculo' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'cantidad' => 'required|numeric',
+            'resp_vehiculo' => 'required|max:150|regex:/(^(([a-zA-Z ]+)?$))/u',
         ]);
     
         //$model = CombustibleSalida::find($id);

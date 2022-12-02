@@ -59,12 +59,12 @@ class CombustibleEntradaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_combustible' => 'required',
-            'id_proveedor' => 'required',
-            'id_empleado' => 'required',
-            'cantidad' => 'required',
-            'emp_proveedor' => 'required',
+            'fecha' => 'required|max:10|date',
+            'id_combustible' => 'required|numeric',
+            'id_proveedor' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'cantidad' => 'required|numeric',
+            'emp_proveedor' => 'required|max:150|regex:/(^(([a-zA-Z ]+)?$))/u',
         ]);
 
         // Guarda el registro en la bd
@@ -132,12 +132,12 @@ class CombustibleEntradaController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_combustible' => 'required',
-            'id_proveedor' => 'required',
-            'id_empleado' => 'required',
-            'cantidad' => 'required',
-            'emp_proveedor' => 'required',
+            'fecha' => 'required|max:10|date',
+            'id_combustible' => 'required|numeric',
+            'id_proveedor' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'cantidad' => 'required|numeric',
+            'emp_proveedor' => 'required|max:150|regex:/(^(([a-zA-Z ]+)?$))/u',
         ]);
     
         //$model = CombustibleEntrada::find($id);

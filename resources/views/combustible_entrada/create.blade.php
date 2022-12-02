@@ -56,7 +56,7 @@ SisAutomotor - Entradas de Combustible
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Cantidad:</label>
-                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" max="500000" step="any" required>
+                                <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" min="1" max="9999" step="any" required>
                             </div>
                         </div>
                     </div>

@@ -41,7 +41,7 @@ class VehiculoEntradaController extends Controller
     public function create()
     {
         $data = array(
-            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get(),
+            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->where('estado', 'EN_OPERACION')->get(),
             'empleados' => Empleado::select('id', 'empleado')->get(),
         );
 
@@ -73,6 +73,10 @@ class VehiculoEntradaController extends Controller
         $model->resp_vehiculo = strtoupper($request->get('resp_vehiculo'));
         $model->obs = strtoupper($request->get('obs'));
         $model->save();
+
+        $modelVehiculo = Vehiculo::find($request->get('id_vehiculo'));
+        $modelVehiculo->estado = 'ACTIVO';
+        $modelVehiculo->save();
     
         return redirect()->route('vehiculo_entrada.index')
             ->with('success','La entrada de vehículo fue creado correctamente.');
@@ -108,7 +112,7 @@ class VehiculoEntradaController extends Controller
         $model = VehiculoEntrada::find($id);
 
         $data = array(
-            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->get(),
+            'vehiculos' => Vehiculo::select('id', 'matricula', 'marca', 'modelo')->where('estado', 'ACTIVO')->get(),
             'empleados' => Empleado::select('id', 'empleado')->get(),
             'vehiculo_entrada' => $model
         );

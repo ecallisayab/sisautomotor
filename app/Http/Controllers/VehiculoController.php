@@ -53,13 +53,13 @@ class VehiculoController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'matricula' => 'required',
-            'marca' => 'required',
-            'modelo' => 'required',
-            'color' => 'required',
-            'tipo' => 'required',
-            'descrip' => 'required',
-            'estado' => 'required',
+            'matricula' => 'required|max:6|min:6|regex:/(^([a-zA-z]){3}(\d){3}?$)/u',
+            'marca' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'modelo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'color' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'tipo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'descrip' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'estado' => 'required|in:ACTIVO,INACTIVO,EN_MANTENIMIENTO',
         ]);
 
         // Verifica que el registro no exista en la bd
@@ -129,8 +129,13 @@ class VehiculoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'matricula' => 'required',
-            'estado' => 'required',
+            'matricula' => 'required|max:6|min:6|regex:/(^([a-zA-z]){3}(\d){3}?$)/u',
+            'marca' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'modelo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'color' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'tipo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'descrip' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'estado' => 'required|in:ACTIVO,INACTIVO,EN_MANTENIMIENTO',
         ]);
 
         // Verifica que el registro no exista en la bd

@@ -60,10 +60,10 @@ class SeguimientoMantenimientoController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_mantenimiento' => 'required',
-            'descrip' => 'required',
-            'id_empleado' => 'required'
+            'fecha' => 'required|date',
+            'id_mantenimiento' => 'required|numeric',
+            'descrip' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'id_empleado' => 'required|numeric'
         ]);
 
         // Guarda el registro en la bd
@@ -127,10 +127,10 @@ class SeguimientoMantenimientoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_mantenimiento' => 'required',
-            'descrip' => 'required',
-            'id_empleado' => 'required'
+            'fecha' => 'required|date',
+            'id_mantenimiento' => 'required|numeric',
+            'descrip' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'id_empleado' => 'required|numeric'
         ]);
     
         //$model = SeguimientoMantenimiento::find($id);

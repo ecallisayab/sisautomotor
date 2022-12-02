@@ -57,10 +57,11 @@ class VehiculoEntradaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_vehiculo' => 'required',
-            'id_empleado' => 'required',
-            'resp_vehiculo' => 'required',
+            'fecha' => 'required|date',
+            'id_vehiculo' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u',
+            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
         ]);
 
         // Guarda el registro en la bd
@@ -125,10 +126,11 @@ class VehiculoEntradaController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_vehiculo' => 'required',
-            'id_empleado' => 'required',
-            'resp_vehiculo' => 'required'
+            'fecha' => 'required|date',
+            'id_vehiculo' => 'required|numeric',
+            'id_empleado' => 'required|numeric',
+            'resp_vehiculo' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)?$)/u',
+            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
         ]);
     
         $model = VehiculoEntrada::find($id);

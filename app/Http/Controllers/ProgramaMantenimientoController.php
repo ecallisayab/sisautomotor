@@ -57,9 +57,10 @@ class ProgramaMantenimientoController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_tipo' => 'required',
-            'id_vehiculo' => 'required'
+            'fecha' => 'required|date',
+            'id_tipo' => 'required|numeric',
+            'id_vehiculo' => 'required|numeric',
+            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u'
         ]);
 
          // Verifica que el registro no exista en la bd
@@ -130,9 +131,10 @@ class ProgramaMantenimientoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha' => 'required',
-            'id_tipo' => 'required',
-            'id_vehiculo' => 'required'
+            'fecha' => 'required|date',
+            'id_tipo' => 'required|numeric',
+            'id_vehiculo' => 'required|numeric',
+            'obs' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u'
         ]);
 
         // Verifica que el registro no exista en la bd

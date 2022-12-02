@@ -59,13 +59,13 @@ class MantenimientoEntradaController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'fecha_entrada' => 'required',
+            'fecha_entrada' => 'required|date',
             'id_tipo' => 'required',
-            'id_vehiculo' => 'required',
-            'diagnostico_entrada' => 'required',
-            'descrip_entrada' => 'required',
-            'id_empleado_entrada' => 'required',
-            'estado' => 'required'
+            'id_vehiculo' => 'required|numeric',
+            'diagnostico_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'id_empleado_entrada' => 'required|numeric',
+            'estado' => 'required|in:EN_PROCESO,CONCLUIDO,CANCELADO'
         ]);
 
         // Guarda el registro en la bd
@@ -134,13 +134,13 @@ class MantenimientoEntradaController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'fecha_entrada' => 'required',
+            'fecha_entrada' => 'required|date',
             'id_tipo' => 'required',
-            'id_vehiculo' => 'required',
-            'diagnostico_entrada' => 'required',
-            'descrip_entrada' => 'required',
-            'id_empleado_entrada' => 'required',
-            'estado' => 'required'
+            'id_vehiculo' => 'required|numeric',
+            'diagnostico_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'descrip_entrada' => 'required|max:1000|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'id_empleado_entrada' => 'required|numeric',
+            'estado' => 'required|numeric'
         ]);
     
         //$model = Mantenimiento::find($id);

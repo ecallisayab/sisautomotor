@@ -49,8 +49,8 @@ class TipoMantenimientoController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'nombre' => 'required',
-            'estado' => 'required',
+            'nombre' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'estado' => 'required|in:ACTIVO,INACTIVO',
         ]);
 
         // Verifica que el registro no exista en la bd
@@ -115,8 +115,8 @@ class TipoMantenimientoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'nombre' => 'required',
-            'estado' => 'required',
+            'nombre' => 'required|max:50|min:1|regex:/(^([a-zA-z_ ]+)(\d+)?$)/u',
+            'estado' => 'required|in:ACTIVO,INACTIVO',
         ]);
 
         // Verifica que el registro no exista en la bd

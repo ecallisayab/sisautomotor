@@ -39,7 +39,7 @@ SisAutomotor - Entradas de Vehículos
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha:</label>
-                                <input type="date" name="fecha" class="form-control" placeholder="Fecha" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d') }}" required>
+                                <input type="date" name="fecha" value="{{old('fecha')}}" class="form-control" placeholder="Fecha" min="{{ date('Y-m-d',time()-(86400*1)) }}" max="{{ date('Y-m-d',time()-(86400*1)) }}" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -69,7 +69,7 @@ SisAutomotor - Entradas de Vehículos
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Resp. vehículo:</label>
-                                <input type="text" name="resp_vehiculo" class="form-control" placeholder="Resp. Vehiculo" required>
+                                <input type="text" name="resp_vehiculo" class="form-control" value="{{old('resp_vehiculo')}}" placeholder="Resp. Vehiculo" required>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ SisAutomotor - Entradas de Vehículos
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Observación:</label>
-                                <textarea class="form-control" name="obs" rows="3"></textarea>
+                                <textarea class="form-control" name="obs" value="{{old('obs')}}" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
